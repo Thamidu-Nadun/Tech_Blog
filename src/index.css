@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "caveat";
+  src: url("./assets/fonts/Caveat/static/Caveat-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "caveat-bold";
+  src: url("./assets/fonts/Caveat/static/Caveat-Bold.ttf") format("truetype");
+  font-weight: bold;
+}
+@font-face {
+  font-family: "caveat-medium";
+  src: url("./assets/fonts/Caveat/static/Caveat-Medium.ttf") format("truetype");
+  font-weight: lighter;
+}
+@font-face {
+  font-family: "caveat-semibold";
+  src: url("./assets/fonts/Caveat/static/Caveat-SemiBold.ttf")
+    format("truetype");
+  font-weight: lighter;
+}
+
+@font-face {
+  font-family: "Noto_Sans";
+  src: url("./assets/fonts/Noto_Sans_JP/static/NotoSansJP-Thin.ttf")
+    format("truetype");
+}
+.font-caveat {
+  font-family: "caveat", sans-serif;
+}
+.font-caveat-bold {
+  font-family: "caveat-bold", sans-serif;
+}
+.font-caveat-medium {
+  font-family: "caveat-medium", sans-serif;
+}
+.font-caveat-semibold {
+  font-family: "caveat-semibold", sans-serif;
+}
+.font-noto-sans {
+  font-family: "Noto_Sans", sans-serif;
+}
+
+body {
+  @apply bg-black text-white font-mono;
+}
+
+@property --bg-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.bg-animation {
+  background-image: conic-gradient(
+    from var(--bg-angle),
+    var(--color-orange-500) 0% 20%,
+    transparent 20% 100%
+  );
+  animation: anim 10s linear infinite;
+}
+@keyframes anim {
+  from {
+    --bg-angle: 0deg;
+  }
+  to {
+    --bg-angle: 360deg;
+  }
+}
