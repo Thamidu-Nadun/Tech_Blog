@@ -8,7 +8,7 @@ function Hero () {
       <div className="container flex flex-col text-center justify-center items-center text-white -translate-y-14">
         <TagButton tag_title="CTRL+Blog" isActive={true} />
         <h2 className="md:text-7xl text-5xl relative">
-          &lt;nadun.<span className="font-noto-sans group">
+          &lt;nadun.<span className="font-noto-sans group cursor-pointer">
             開発者
             <span
               className="absolute top-4 right-12 opacity-0 font-sans rotate-12 text-lg bg-white px-3 py-0.5 text-black rounded-xl group-hover:opacity-100 group-hover:-top-8 group-hover:right-8 transition-all duration-300"
