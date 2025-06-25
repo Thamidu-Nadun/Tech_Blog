@@ -6,6 +6,7 @@ import FeaturedArticles from './Components/FeaturedArticles/FeaturedArticles';
 import Footer from '../../Components/Footer/Footer';
 import Newsletter from './Components/Newsletter/Newsletter';
 import Categories from './Components/Categories/Categories';
+import RecentArticles from './Components/RecentArticles/RecentArticles';
 
 function Home () {
   return (
@@ -14,6 +15,7 @@ function Home () {
       <Podcast />
       <WebStories />
       <FeaturedArticles autoScroll={true} autoScrollDuration={3000} />
+      <RecentArticles />
       <Categories />
       <Newsletter />
     </div>
