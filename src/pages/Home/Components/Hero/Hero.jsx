@@ -11,7 +11,7 @@ function Hero () {
           &lt;nadun.<span className="font-noto-sans group cursor-pointer">
             開発者
             <span
-              className="absolute top-4 right-12 opacity-0 font-sans rotate-12 text-lg bg-white px-3 py-0.5 text-black rounded-xl group-hover:opacity-100 group-hover:-top-8 group-hover:right-8 transition-all duration-300"
+              className="absolute top-4 right-12 opacity-0 font-sans rotate-12 md:text-lg text-sm bg-white px-2 py-0.5 text-black rounded-xl group-hover:opacity-100 group-hover:-top-8 group-hover:right-8 transition-all duration-300"
               aria-hidden="true"
             >
               Dev

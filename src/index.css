@@ -69,3 +69,18 @@ body {
     --bg-angle: 360deg;
   }
 }
+
+table {
+  @apply w-full text-left border border-gray-700 rounded-md overflow-hidden;
+
+  td,
+  th {
+    @apply border border-gray-700 p-3 text-sm text-gray-200;
+  }
+
+  tbody {
+    tr {
+      @apply hover:bg-gray-800 transition-colors duration-200;
+    }
+  }
+}
