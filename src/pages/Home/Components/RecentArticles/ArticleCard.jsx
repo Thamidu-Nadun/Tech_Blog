@@ -1,4 +1,4 @@
-import {Clock, User} from 'lucide-react';
+import {Clock, Eye, ThumbsUp, User} from 'lucide-react';
 import TagButton from '../../../../Components/TagButton/TagButton';
 
 function ArticleCard({
@@ -26,11 +26,11 @@ function ArticleCard({
         </time>
         <div className="absolute bottom-2 px-4 article_interactions flex justify-between w-full">
           <div className="flex gap-1">
-            <span className="w-fit rounded-md text-sm h-fit px-2 py-0.5 bg-gradient-to-r from-orange-600/20 to-amber-500/20 border border-orange-500/30 text-orange-400">
-              {article_views}
+            <span className="flex gap-2 w-fit items-center rounded-md text-sm h-fit px-2 py-0.5 bg-gradient-to-r from-orange-600/20 to-amber-500/20 border border-orange-500/30 text-orange-400">
+              <Eye size={15} />{article_views}
             </span>
-            <span className="w-fit rounded-md h-fit px-2 py-0.5 text-sm bg-gradient-to-r from-orange-600/20 to-amber-500/20 border border-orange-500/30 text-orange-400">
-              {article_likes}
+            <span className="flex gap-2 items-center w-fit rounded-md h-fit px-2 py-0.5 text-sm bg-gradient-to-r from-orange-600/20 to-amber-500/20 border border-orange-500/30 text-orange-400">
+              <ThumbsUp size={15} />{article_likes}
             </span>
           </div>
           <div className="article_category_btn bg-gradient-to-r from-orange-600 to-amber-500 text-black px-2 py-1 rounded text-xs font-semibold w-fit">
