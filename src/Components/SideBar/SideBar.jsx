@@ -1,6 +1,7 @@
 import {
   Book,
   Home,
+  LayoutGrid,
   Menu,
   MessageCircle,
   Podcast,
@@ -31,6 +32,12 @@ function SideBar({isSideBarOpen, setIsSideBarOpen}) {
       Icon: Smartphone,
       path: '/stories',
     },
+    {
+      name: 'Categories',
+      Icon: LayoutGrid,
+      path: '/categories',
+    },
+
     {
       name: 'Comments',
       Icon: MessageCircle,

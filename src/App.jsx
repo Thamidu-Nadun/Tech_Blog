@@ -10,13 +10,7 @@ import Article from './pages/Article/Article';
 /**
  * Dashboard - Admin
 */
-import AdminDashboardLayout from './Layout/AdminDashboardLayout';
-import DashboardPage from './pages/Admin/Admin';
-import ArticlesPage from './pages/Admin/pages/Articles/Articles';
-import PodcastsPage from './pages/Admin/pages/Podcasts/Podcasts';
-import WebStoriesPage from './pages/Admin/pages/WebStories/WebStories';
-import CommentsPage from './pages/Admin/pages/Comments/Comments';
-
+import DashBoardRoutes from './pages/Admin/DashBoardRoutes';
 function App () {
   return (
     <div className="bg-gray-950">
@@ -28,13 +22,7 @@ function App () {
           <Route path="*" element={<h1>NotFound</h1>} />
         </Route>
         {/* Dashboard - Admin */}
-        <Route path="/dashboard" element={<AdminDashboardLayout />}>
-          <Route index element={<DashboardPage />} />
-          <Route path="articles" element={<ArticlesPage />} />
-          <Route path="podcasts" element={<PodcastsPage />} />
-          <Route path="stories" element={<WebStoriesPage />} />
-          <Route path="comments" element={<CommentsPage />} />
-        </Route>
+        {DashBoardRoutes}
       </Routes>
     </div>
   );
