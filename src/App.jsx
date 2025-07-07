@@ -1,5 +1,6 @@
 import React from 'react';
 import {Route, Routes} from 'react-router-dom';
+import NotFound from './pages/NotFound';
 /**
  * Main Components
  */
@@ -19,7 +20,7 @@ function App () {
         <Route element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="article" element={<Article />} />
-          <Route path="*" element={<h1>NotFound</h1>} />
+          <Route path="*" element={<NotFound />} />
         </Route>
         {/* Dashboard - Admin */}
         {DashBoardRoutes}

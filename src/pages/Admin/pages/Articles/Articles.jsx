@@ -1,8 +1,8 @@
-import React from 'react';
-import BreadCrumbs from '../../../../Components/BreadCrumb/BreadCrumb';
 import {Link} from 'react-router-dom';
+import BreadCrumbs from '../../../../Components/BreadCrumb/BreadCrumb';
+import {Plus} from 'lucide-react';
 
-export default function Articles () {
+export default function Articles() {
   const recentPosts = [
     {
       id: 4,
@@ -47,18 +47,18 @@ export default function Articles () {
   ];
 
   return (
-    <div className="w-full">
+    <div className="w-full p-4 sm:p-6 lg:p-8">
       <BreadCrumbs
         prev_name="Dashboard"
         prev_link="/dashboard"
         next_name="articles"
         next_link=""
       />
-      <br />
-      <div className="article-table mt-10">
-        {recentPosts.map ((article, index) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+        {recentPosts.map((article, index) => (
           <ArticleCard
             key={index}
+            id={article.id}
             article_title={article.title}
             article_description={article.description}
             article_author={article.author}
@@ -68,11 +68,18 @@ export default function Articles () {
           />
         ))}
       </div>
+      <Link
+        to="/dashboard/articles/new"
+        className="fixed bottom-10 right-10 bg-orange-500 text-white p-4 rounded-full shadow-lg hover:bg-orange-600 transition-colors duration-300 ease-in-out"
+      >
+        <Plus size={24} />
+      </Link>
     </div>
   );
 }
 
 const ArticleCard = ({
+  id,
   article_title,
   article_description,
   image_url,
@@ -80,29 +87,38 @@ const ArticleCard = ({
   article_author,
   article_category,
 }) => (
-  <div className="w-full flex gap-2 my-4">
-    <img src={image_url} alt={article_title} className="size-32 rounded-2xl" />
-    <div className="article_info m-2 flex flex-col justify-between">
-      <div>
-        <h2 className="text-xl cursor-pointer text-orange-400">
-          {article_title}
-        </h2>
-        <p className="text-gray-300 truncate w-80">
-          {article_description}
-        </p>
-      </div>
+  <div className="bg-gray-800 rounded-2xl overflow-hidden shadow-lg group transform hover:-translate-y-2 transition-transform duration-300 ease-in-out">
+    <img src={image_url} alt={article_title} className="w-full h-48 object-cover" />
+    <div className="p-4 sm:p-6">
       <Link
-        to={`/dashboard/categories/${article_category.toLowerCase ()}`}
-        className="mb-2 border border-orange-600 w-fit px-1 py-0.5 rounded text-xs"
+        to={`/dashboard/categories/${article_category.toLowerCase()}`}
+        className="mb-2 inline-block border border-orange-600 w-fit px-2 py-1 rounded-full text-xs text-orange-400 hover:bg-orange-600 hover:text-white transition-colors duration-300 ease-in-out"
       >
         {article_category}
       </Link>
-      <div className="flex gap-x-4 mt-2">
-        <p className="text-orange-400">{article_date}</p>
-        <p className="bg-gradient-to-r from-gray-300 to-gray-400 bg-clip-text text-transparent font-mono">
-          By {article_author}
-        </p>
+      <h2 className="text-xl font-bold text-orange-400 cursor-pointer mb-2">
+        {article_title}
+      </h2>
+      <p className="text-gray-300 text-sm mb-4 h-12 overflow-hidden">
+        {article_description}
+      </p>
+      <div className="flex justify-between items-center text-xs text-gray-400">
+        <span>{article_date}</span>
+        <span>By {article_author}</span>
       </div>
+    </div>
+    <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
+      <Link
+        to={`/dashboard/articles/edit/${id}`}
+        className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition-colors duration-300 ease-in-out"
+      >
+        Edit
+      </Link>
+      <button
+        className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition-colors duration-300 ease-in-out"
+      >
+        Delete
+      </button>
     </div>
   </div>
 );
