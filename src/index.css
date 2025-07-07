@@ -44,7 +44,7 @@
 }
 
 body {
-  @apply bg-black text-white font-mono;
+  @apply bg-black text-white font-mono overflow-x-hidden;
 }
 
 @property --bg-angle {

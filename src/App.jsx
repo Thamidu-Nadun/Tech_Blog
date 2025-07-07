@@ -14,7 +14,7 @@ import Article from './pages/Article/Article';
 import DashBoardRoutes from './pages/Admin/DashBoardRoutes';
 function App () {
   return (
-    <div className="bg-gray-950">
+    <div className="bg-gray-950 overflow-x-hidden">
       <Routes>
         {/* Main */}
         <Route element={<MainLayout />}>
