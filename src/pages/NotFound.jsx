@@ -47,6 +47,8 @@ function NotFound () {
     const loop = () => {
       mesh.rotation.y = mouse.x * 4;
       mesh.rotation.x = mouse.y * 2;
+      mesh.position.x = mouse.x * 5;
+      mesh.position.y = -(mouse.y * 5);
       renderer.render (scene, camera);
       requestAnimationFrame (loop);
     };
