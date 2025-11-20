@@ -1,17 +1,43 @@
 import React from 'react';
-import BreadCrumb from '../../Components/BreadCrumb/BreadCrumb';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement,
+} from 'chart.js';
+import {Line, Doughnut} from 'react-chartjs-2';
+import AdminCards from './pages/Components/AdminCards';
+import AdminComments from './pages/Components/AdminComments';
+import AdminCharts from './pages/Components/AdminCharts';
 
-function Admin () {
+ChartJS.register (
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement
+);
+
+const AdminDashboard = () => {
   return (
-    <div>
-      <BreadCrumb
-        prev_name="Dashboard"
-        prev_link="/dashboard"
-        next_name="/"
-        next_link=""
-      />
+    <div className="container mx-auto p-4 sm:p-6 lg:p-8">
+      <h1 className="text-3xl font-bold mb-6 text-white">Admin Dashboard</h1>
+      {/* Cards */}
+      <AdminCards />
+      {/* Charts */}
+      <AdminCharts />
+      {/* Recent Comments */}
+      <AdminComments />
     </div>
   );
-}
+};
 
-export default Admin;
+export default AdminDashboard;

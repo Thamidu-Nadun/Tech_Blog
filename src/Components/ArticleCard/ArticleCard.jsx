@@ -1,6 +1,7 @@
 import {Calendar, Eye, Timer, User} from 'lucide-react';
 import React from 'react';
 import TagButton from '../TagButton/TagButton';
+import {Link} from 'react-router-dom';
 
 function ArticleCard({
   article_title = 'Article Title',
@@ -27,10 +28,10 @@ function ArticleCard({
           tag_title={article_category}
           tag_link={article_category_link}
         />
-        <h2 className="w-200 h-10 truncate text-3xl group-hover:text-orange-300 transition-all duration-300">
+        <Link className="w-200 h-10 truncate text-3xl group-hover:text-orange-300 transition-all duration-300">
           {article_title}
-        </h2>
-        <p className='w-220 truncate'>
+        </Link>
+        <p className="w-220 truncate">
           {article_description}
         </p>
         <div className="flex gap-4 my-4 opacity-75">

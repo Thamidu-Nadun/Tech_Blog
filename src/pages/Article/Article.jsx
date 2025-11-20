@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 import renderer from '@thamidu-nadun/md_parser';
 import './article.css';
+import './theme.css';
 import Prismjs from 'prismjs';
 
 import 'prismjs/components/prism-sql';
@@ -15,6 +16,7 @@ function Article () {
   useEffect (() => {
     fetch ('/article.md')
       .then (res => res.text ())
+      .then (data => data.replaceAll ('==', '<u>').replaceAll ('==!', '</u>'))
       .then (data => setContent (renderer (data).html));
   }, []);
   useEffect (

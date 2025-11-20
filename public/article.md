@@ -25,7 +25,7 @@ const person = {
 
 ### WHAT IS A DATABASE
 
-Database is a put our data in some specific location. There is a another thing you need to know, that is ==DBMS(Database Management System)==. we can use NoSQL or SQL. It's depend on what we choose DBMS.
+Database is a put our data in some specific location. There is a another thing you need to know, that is ==DBMS(Database Management System)==!. we can use NoSQL or SQL. It's depend on what we choose DBMS.
 
 ### WHY WE USE SQL
 

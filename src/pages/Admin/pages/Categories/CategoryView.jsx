@@ -17,7 +17,7 @@ const CategoryView = () => {
     <div className="min-h-screen w-full px-6 py-10 bg-gradient-to-b from-gray-900 to-gray-800 text-white">
       <BreadCrumb
         prev_name="Categories"
-        prev_link={() => navigate (-1)}
+        prev_link={'/dashboard/categories'}
         next_name={category.name}
         next_link=""
       />

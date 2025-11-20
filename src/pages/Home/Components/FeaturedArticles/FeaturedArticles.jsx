@@ -40,7 +40,7 @@ function FeaturedArticles({autoScroll = false, autoScrollDuration = 3000}) {
     } else {
       setPostIndex (featuredPosts.length - 1);
     }
-    console.log (postIndex);
+    // console.log (postIndex);
   };
   const next = () => {
     if (postIndex < featuredPosts.length - 1) {
@@ -48,13 +48,16 @@ function FeaturedArticles({autoScroll = false, autoScrollDuration = 3000}) {
     } else {
       setPostIndex (0);
     }
-    console.log (postIndex);
+    // console.log (postIndex);
   };
-  useEffect (() => {
-    if (!autoScroll) return;
-    const scrollI = setInterval (next, autoScrollDuration);
-    return () => clearInterval (scrollI);
-  }, [next]);
+  useEffect (
+    () => {
+      if (!autoScroll) return;
+      const scrollI = setInterval (next, autoScrollDuration);
+      return () => clearInterval (scrollI);
+    },
+    [next]
+  );
   return (
     <Section
       section_title="Featured Articles"

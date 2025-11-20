@@ -1,5 +1,6 @@
 import {Clock, Eye, ThumbsUp, User} from 'lucide-react';
 import TagButton from '../../../../Components/TagButton/TagButton';
+import {Link} from 'react-router-dom';
 
 function ArticleCard({
   article_title = 'Introduction to AI',
@@ -40,9 +41,9 @@ function ArticleCard({
       </div>
       <div className="article_body px-0.5 p-4">
         <div className="article_details border border-orange-900/20">
-          <h2 className="article_title text-xl text-bold underline">
+          <Link className="article_title text-xl text-bold underline">
             {article_title}
-          </h2>
+          </Link>
           <p className="article_description text-sm text-gray-400 line-clamp-2 w-full mt-4 mb-15">
             {article_description}
           </p>
