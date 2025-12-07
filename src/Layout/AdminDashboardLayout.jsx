@@ -27,7 +27,6 @@ function AdminDashboardLayout () {
           <Outlet />
         </div>
       </div>
-      <div className="absolute bottom-0 footer border-t border-orange-800/50 w-screen h-8" />
     </div>
   );
 }
