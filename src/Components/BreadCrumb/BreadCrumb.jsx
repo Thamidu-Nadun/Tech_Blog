@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 function BreadCrumb({prev_link, next_link, prev_name, next_name}) {
   return (
     <div className="inline-block">
-      <div class="absolute flex flex-wrap justify-center items-center space-x-2 text-sm text-gray-100 font-medium">
+      <div className="absolute flex flex-wrap justify-center items-center space-x-2 text-sm text-gray-100 font-medium">
         <Link to="/" aria-label="Home">
           <Home size={24} />
         </Link>
