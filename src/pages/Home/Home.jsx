@@ -11,8 +11,8 @@ function Home () {
   return (
     <div>
       <Hero />
-      <Podcast />
-      <WebStories />
+      {/* <Podcast /> */}
+      {/* <WebStories /> */}
       <FeaturedArticles autoScroll={true} autoScrollDuration={3000} />
       <RecentArticles />
       <Categories />
