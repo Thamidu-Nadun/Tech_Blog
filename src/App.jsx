@@ -12,9 +12,17 @@ import Article from './pages/Article/Article';
  * Dashboard - Admin
 */
 import DashBoardRoutes from './pages/Admin/DashBoardRoutes';
+import {Toaster} from 'react-hot-toast';
 function App () {
   return (
     <div className="bg-gray-950 overflow-x-hidden">
+      <Toaster
+        position="bottom-right"
+        toastOptions={{
+          duration: 1500,
+          style: {background: '#333', color: '#fff'},
+        }}
+      />
       <Routes>
         {/* Main */}
         <Route element={<MainLayout />}>
