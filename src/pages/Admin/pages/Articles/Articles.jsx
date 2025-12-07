@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom';
 import BreadCrumbs from '../../../../Components/BreadCrumb/BreadCrumb';
 import {Plus} from 'lucide-react';
 
-export default function Articles() {
+export default function Articles () {
   const recentPosts = [
     {
       id: 4,
@@ -16,7 +16,7 @@ export default function Articles() {
     },
     {
       id: 5,
-      title: 'Optimizing React Performance',
+      title: 'Optimizing React Performance with Concurrent Features and Suspense with Data Fetching',
       description: 'Advanced techniques for making your React applications lightning fast.',
       author: 'Lisa Park',
       date: '2025-06-11',
@@ -55,7 +55,7 @@ export default function Articles() {
         next_link=""
       />
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-        {recentPosts.map((article, index) => (
+        {recentPosts.map ((article, index) => (
           <ArticleCard
             key={index}
             id={article.id}
@@ -87,18 +87,26 @@ const ArticleCard = ({
   article_author,
   article_category,
 }) => (
-  <div className="bg-gray-800 rounded-2xl overflow-hidden shadow-lg group transform hover:-translate-y-2 transition-transform duration-300 ease-in-out">
-    <img src={image_url} alt={article_title} className="w-full h-48 object-cover" />
+  <div className="bg-gray-800 pb-10 rounded-2xl overflow-hidden shadow-lg group transform hover:-translate-y-2 transition-transform duration-300 ease-in-out">
+    <img
+      src={image_url}
+      alt={article_title}
+      className="w-full h-48 object-cover"
+    />
     <div className="p-4 sm:p-6">
       <Link
-        to={`/dashboard/categories/${article_category.toLowerCase()}`}
+        to={`/dashboard/categories/${article_category.toLowerCase ()}`}
         className="mb-2 inline-block border border-orange-600 w-fit px-2 py-1 rounded-full text-xs text-orange-400 hover:bg-orange-600 hover:text-white transition-colors duration-300 ease-in-out"
       >
         {article_category}
       </Link>
-      <h2 className="text-xl font-bold text-orange-400 cursor-pointer mb-2">
+      <div
+        className="text-2xl font-bold text-orange-400 cursor-pointer mb-2 hover:underline
+        line-clamp-2"
+        title={article_title}
+      >
         {article_title}
-      </h2>
+      </div>
       <p className="text-gray-300 text-sm mb-4 h-12 overflow-hidden">
         {article_description}
       </p>
@@ -107,18 +115,17 @@ const ArticleCard = ({
         <span>By {article_author}</span>
       </div>
     </div>
-    <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
+    <div className="absolute bottom-4 right-4 flex flex-row gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
       <Link
         to={`/dashboard/articles/edit/${id}`}
-        className="bg-blue-500 text-white px-3 py-1 rounded-md hover:bg-blue-600 transition-colors duration-300 ease-in-out"
+        className="bg-orange-500 text-white px-3 py-1 rounded-md hover:bg-orange-600 transition-colors duration-300"
       >
         Edit
       </Link>
-      <button
-        className="bg-red-500 text-white px-3 py-1 rounded-md hover:bg-red-600 transition-colors duration-300 ease-in-out"
-      >
+      <button className="border-1 border-rose-500 text-white px-3 py-1 rounded-md hover:cursor-pointer hover:bg-rose-500/30 transition-colors duration-300">
         Delete
       </button>
     </div>
+
   </div>
 );

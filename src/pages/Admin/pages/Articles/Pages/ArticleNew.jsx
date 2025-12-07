@@ -28,7 +28,12 @@ const ArticleNew = () => {
 
   return (
     <div className="w-full p-4">
-      <BreadCrumb prev_name={'DashBoard'} prev_link={'/dashboard'} />
+      <BreadCrumb
+        prev_name={'DashBoard'}
+        prev_link={'/dashboard'}
+        next_name={'Articles'}
+        next_link={'/dashboard/articles'}
+      />
       <div className="mt-15 ml-4 px-5">
         <h2 className="text-2xl">Create New Article</h2>
         <form onSubmit={handleSubmit}>
