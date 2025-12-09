@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Plus, PlayCircle, MoreVertical} from 'lucide-react';
+import {Plus, PlayCircle, MoreVertical, MoreHorizontal} from 'lucide-react';
 
 const podcasts = [
   {
@@ -45,14 +45,14 @@ const podcasts = [
   },
 ];
 
-function Podcasts() {
+function Podcasts () {
   return (
     <div className="container mx-auto p-4 sm:p-6 lg:p-8">
-      <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-white">Podcasts</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {podcasts.map((podcast) => (
-          <PodcastCard key={podcast.id} podcast={podcast} />
-        ))}
+      <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-white">
+        Podcasts
+      </h1>
+      <div>
+        <PodcastCard podcast={podcasts} />
       </div>
       <Link
         to="/dashboard/podcasts/new"
@@ -66,36 +66,47 @@ function Podcasts() {
 
 const PodcastCard = ({podcast}) => {
   return (
-    <div className="bg-gray-800 rounded-2xl overflow-hidden shadow-lg group transform hover:-translate-y-2 transition-transform duration-300 ease-in-out flex flex-col">
-      <div className="relative">
-        <img src={podcast.imageUrl} alt={podcast.title} className="w-full h-48 object-cover" />
-        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <PlayCircle size={64} className="text-white" />
-        </div>
-        <span
-          className={`absolute top-2 right-2 px-2 py-1 text-xs font-semibold rounded-full ${podcast.status === 'Published' ? 'bg-green-500 text-white' : 'bg-yellow-500 text-black'}`}>
-          {podcast.status}
-        </span>
-      </div>
-      <div className="p-4 flex flex-col flex-grow">
-        <h3 className="text-lg font-bold text-orange-400 mb-1">{podcast.title}</h3>
-        <p className="text-sm text-gray-400 mb-2">By {podcast.author}</p>
-        <div className="mt-auto flex items-center justify-between text-gray-400 pt-4">
-          <span className="text-xs">{podcast.date}</span>
-          <div className="flex items-center gap-1 text-xs">
-            <PlayCircle size={16} />
-            <span>{podcast.duration}</span>
-          </div>
-        </div>
-        <div className="flex justify-end gap-2 mt-4">
-            <Link to={`/dashboard/podcasts/edit/${podcast.id}`} className="text-blue-400 hover:text-blue-600">
-                Edit
-            </Link>
-            <button className="text-red-400 hover:text-red-600">
-                Delete
-            </button>
-        </div>
-      </div>
+    <div className="bg-slate-900 text-gray-400/20 rounded-2xl overflow-hidden shadow-lg group transform hover:-translate-y-2 transition-transform duration-300 ease-in-out flex flex-col">
+      <table>
+        <thead>
+          <tr className="uppercase">
+            <th className="w-25" />
+            <th>title</th>
+            <th>Published Date</th>
+            <th>Duration</th>
+            <th>status</th>
+            <th>action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {podcast.map (item => {
+            let date = new Date (item.date).toLocaleDateString ('en-US', {
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric',
+            });
+
+            return (
+              <tr>
+                <td className="flex justify-center w-25">
+                  <img
+                    className="size-20 rounded-xl hover:scale-105 transition duration-100 ease-in-out"
+                    src={item.imageUrl}
+                    alt={item.title}
+                  />
+                </td>
+                <td>{item.title}</td>
+                <td>{date}</td>
+                <td>{item.duration}</td>
+                <td>{item.status}</td>
+                <td>
+                  <MoreHorizontal size={20} />
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 };

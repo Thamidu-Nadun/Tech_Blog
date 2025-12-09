@@ -20,10 +20,10 @@ function AdminDashboardLayout () {
       />
       {/* Main Content */}
       <div
-        className={`transition-all duration-300 ease-in-out ${isSideBarOpen ? 'md:ml-64' : 'md:ml-24'}`}
+        className={`transition-all duration-300 ease-in-out ${isSideBarOpen ? 'ml-64' : 'ml-10 md:ml-24'}`}
       >
-        <header className="w-screen h-12 bg-gradient-to-r from-gray-800 to-gray-600" />
-        <div className="h-screen w-full m-4 relative">
+        <header className="w-screen h-12 bg-gray-800" />
+        <div className="h-screen w-full m-4 px-4 relative ">
           <Outlet />
         </div>
       </div>

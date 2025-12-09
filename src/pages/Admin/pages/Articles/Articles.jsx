@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 import BreadCrumbs from '../../../../Components/BreadCrumb/BreadCrumb';
-import {Plus} from 'lucide-react';
+import {Pen, PenIcon, Plus, Trash} from 'lucide-react';
 
 export default function Articles () {
   const recentPosts = [
@@ -54,6 +54,31 @@ export default function Articles () {
         next_name="articles"
         next_link=""
       />
+      <div className="mt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center mt-6 gap-4 sm:gap-6 w-60 md:w-75">
+          <div className="bg-gray-700 px-2 rounded-md">
+            <select
+              name="status"
+              className="bg-gray-700 text-white px-4 py-2 rounded-md hover:cursor-pointer focus:outline-none"
+            >
+              <option value="all" selected hidden>Status</option>
+              <option value="published">published</option>
+              <option value="draft">draft</option>
+              <option value="archived">archived</option>
+            </select>
+          </div>
+          <div className="bg-gray-700 px-2 rounded-md">
+            <select
+              name="date"
+              className="bg-gray-700 text-white px-4 py-2 rounded-md hover:cursor-pointer focus:outline-none"
+            >
+              <option value="all" selected hidden>Date Range</option>
+              <option value="newest">newest</option>
+              <option value="oldest">oldest</option>
+            </select>
+          </div>
+        </div>
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
         {recentPosts.map ((article, index) => (
           <ArticleCard
@@ -81,18 +106,19 @@ export default function Articles () {
 const ArticleCard = ({
   id,
   article_title,
-  article_description,
   image_url,
   article_date,
   article_author,
   article_category,
 }) => (
-  <div className="bg-gray-800 pb-10 rounded-2xl overflow-hidden shadow-lg group transform hover:-translate-y-2 transition-transform duration-300 ease-in-out">
-    <img
-      src={image_url}
-      alt={article_title}
-      className="w-full h-48 object-cover"
-    />
+  <div className="bg-gray-900 relative pb-10 rounded-2xl overflow-hidden shadow-xs shadow-gray-50/50 group transform hover:-translate-y-2 transition-transform duration-300 ease-in-out">
+    <div className="w-full py-3 sm:p-4 lg:p-6">
+      <img
+        src={image_url}
+        alt={article_title}
+        className="w-full h-48 object-cover"
+      />
+    </div>
     <div className="p-4 sm:p-6">
       <Link
         to={`/dashboard/categories/${article_category.toLowerCase ()}`}
@@ -101,30 +127,35 @@ const ArticleCard = ({
         {article_category}
       </Link>
       <div
-        className="text-2xl font-bold text-orange-400 cursor-pointer mb-2 hover:underline
+        className="text-2xl font-bold text-gray-50 cursor-pointer mb-2 hover:underline
         line-clamp-2"
         title={article_title}
       >
         {article_title}
       </div>
-      <p className="text-gray-300 text-sm mb-4 h-12 overflow-hidden">
-        {article_description}
-      </p>
-      <div className="flex justify-between items-center text-xs text-gray-400">
-        <span>{article_date}</span>
-        <span>By {article_author}</span>
+
+      <div className="flex flex-col justify-center text-gray-300 mt-12 gap-1">
+        <span className="text-xs">{article_date}</span>
+        <span className="text-md">By {article_author}</span>
       </div>
     </div>
-    <div className="absolute bottom-4 right-4 flex flex-row gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-      <Link
-        to={`/dashboard/articles/edit/${id}`}
-        className="bg-orange-500 text-white px-3 py-1 rounded-md hover:bg-orange-600 transition-colors duration-300"
-      >
-        Edit
-      </Link>
-      <button className="border-1 border-rose-500 text-white px-3 py-1 rounded-md hover:cursor-pointer hover:bg-rose-500/30 transition-colors duration-300">
-        Delete
-      </button>
+    <div className="flex items-center justify-between px-6 absolute bottom-4 w-full">
+      <div>
+        <span className="bg-green-500/20 text-green-500 px-3 py-1 rounded-md text-xs sm:text-sm">
+          Published
+        </span>
+      </div>
+      <div className="flex items-center gap-2">
+        <Link
+          to={`/dashboard/articles/edit/${id}`}
+          className="bg-amber-500/20 text-white p-3 transition-colors duration-300 rounded-xl flex items-center hover:bg-amber-500/30 hover:cursor-pointer"
+        >
+          <PenIcon size={16} className="inline-block" />
+        </Link>
+        <button className="bg-red-500/20 text-white p-3 transition-colors duration-300 rounded-xl flex items-center hover:bg-red-500/30 hover:cursor-pointer">
+          <Trash size={16} className="inline-block" />
+        </button>
+      </div>
     </div>
 
   </div>

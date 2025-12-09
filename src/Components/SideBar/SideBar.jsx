@@ -46,7 +46,7 @@ function SideBar({isSideBarOpen, setIsSideBarOpen}) {
   ];
   return (
     <div
-      className={`${isSideBarOpen ? 'w-64' : 'w-15 md:w-24'} h-screen overflow-y-scroll fixed bg-gradient-to-b from-gray-950 to-gray-800/40 transition-all duration-300 ease-in-out z-50`}
+      className={`${isSideBarOpen ? 'w-64' : 'w-15 md:w-24'} h-screen overflow-y-scroll fixed bg-linear-to-b from-gray-800 to-gray-800/40 transition-all duration-300 ease-in-out z-50`}
     >
       <nav
         className={`mx-2 my-2 pt-5 flex flex-col ${isSideBarOpen ? '' : 'items-center'}`}
@@ -66,7 +66,7 @@ function SideBar({isSideBarOpen, setIsSideBarOpen}) {
               end
               key={index}
               className={({isActive}) =>
-                `${isActive ? 'bg-amber-500' : ''} px-6 py-3 flex items-center gap-2 rounded-2xl  w-full hover:bg-amber-500/90`}
+                `${isActive ? 'text-amber-500 bg-amber-500/20 font-bold' : ''} px-6 py-3 flex items-center gap-4 rounded-2xl w-full hover:text-amber-500/90 hover:bg-amber-500/10 hover:font-semibold`}
             >
               <link.Icon />
               {isSideBarOpen ? link.name : ''}
