@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 
-function CodeBlock () {
+function CodeBlock() {
   return <div>CodeBlock</div>;
 }
 

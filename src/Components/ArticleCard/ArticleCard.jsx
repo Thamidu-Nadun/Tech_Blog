@@ -1,18 +1,18 @@
-import {Calendar, Eye, Timer, User} from 'lucide-react';
-import React from 'react';
-import TagButton from '../TagButton/TagButton';
-import {Link} from 'react-router-dom';
+import { Calendar, Eye, Timer, User } from "lucide-react";
+import React from "react";
+import TagButton from "../TagButton/TagButton";
+import { Link } from "react-router-dom";
 
 function ArticleCard({
-  article_title = 'Article Title',
-  article_category = 'Category',
-  article_category_link = '/articles/category',
-  article_thumbnail = 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop',
-  article_link = '/articles/react',
-  article_description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-  article_date = '6/6/2025',
-  article_read_time = '12 min',
-  article_views = '1K',
+  article_title = "Article Title",
+  article_category = "Category",
+  article_category_link = "/articles/category",
+  article_thumbnail = "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop",
+  article_link = "/articles/react",
+  article_description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  article_date = "6/6/2025",
+  article_read_time = "12 min",
+  article_views = "1K",
 }) {
   return (
     <div
@@ -31,9 +31,7 @@ function ArticleCard({
         <Link className="w-200 h-10 truncate text-3xl group-hover:text-orange-300 transition-all duration-300">
           {article_title}
         </Link>
-        <p className="w-220 truncate">
-          {article_description}
-        </p>
+        <p className="w-220 truncate">{article_description}</p>
         <div className="flex gap-4 my-4 opacity-75">
           <div className="flex items-center gap-2">
             <Calendar size={16} />

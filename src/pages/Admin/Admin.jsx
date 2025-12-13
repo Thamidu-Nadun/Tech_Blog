@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,13 +9,13 @@ import {
   Tooltip,
   Legend,
   ArcElement,
-} from 'chart.js';
-import {Line, Doughnut} from 'react-chartjs-2';
-import AdminCards from './pages/Components/AdminCards';
-import AdminComments from './pages/Components/AdminComments';
-import AdminCharts from './pages/Components/AdminCharts';
+} from "chart.js";
+import { Line, Doughnut } from "react-chartjs-2";
+import AdminCards from "./pages/Components/AdminCards";
+import AdminComments from "./pages/Components/AdminComments";
+import AdminCharts from "./pages/Components/AdminCharts";
 
-ChartJS.register (
+ChartJS.register(
   CategoryScale,
   LinearScale,
   PointElement,
@@ -23,7 +23,7 @@ ChartJS.register (
   Title,
   Tooltip,
   Legend,
-  ArcElement
+  ArcElement,
 );
 
 const AdminDashboard = () => {

@@ -1,7 +1,7 @@
-import {Lightbulb} from 'lucide-react';
-import React from 'react';
+import { Lightbulb } from "lucide-react";
+import React from "react";
 
-function Callout({Icon = Lightbulb}) {
+function Callout({ Icon = Lightbulb }) {
   return (
     <div className="article_callout border-l-4 border-green-500 p-4 shadow shadow-green-800 my-4">
       <div className="callout_header flex gap-4 items-center text-green-500">
@@ -10,7 +10,9 @@ function Callout({Icon = Lightbulb}) {
       </div>
       <div className="callout_body p-2">
         <p className="text-gray-200">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Reprehenderit culpa totam atque quo iusto, blanditiis commodi cumque   ratione optio.
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+          Reprehenderit culpa totam atque quo iusto, blanditiis commodi cumque
+          ratione optio.
         </p>
       </div>
     </div>

@@ -1,47 +1,44 @@
-import React, {useEffect} from 'react';
-import {useParams, useNavigate} from 'react-router-dom';
-import BreadCrumb from '../../../../Components/BreadCrumb/BreadCrumb';
-import {getCategoryById, updateCategoryById} from './util';
-import {getArticleByCategoryId} from '../Articles/util';
+import React, { useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import BreadCrumb from "../../../../Components/BreadCrumb/BreadCrumb";
+import { getCategoryById, updateCategoryById } from "./util";
+import { getArticleByCategoryId } from "../Articles/util";
 
 const CategoryView = () => {
-  const navigate = useNavigate ();
-  const {cat_id} = useParams ();
+  const navigate = useNavigate();
+  const { cat_id } = useParams();
 
-  const [category, setCategory] = React.useState ({
+  const [category, setCategory] = React.useState({
     id: cat_id,
-    name: 'Technology',
-    description: 'All about the latest in tech.',
-    imageUrl: 'https://via.placeholder.com/150?text=Tech',
+    name: "Technology",
+    description: "All about the latest in tech.",
+    imageUrl: "https://via.placeholder.com/150?text=Tech",
   });
-  const [articles, setArticles] = React.useState ([]);
+  const [articles, setArticles] = React.useState([]);
 
-  useEffect (
-    () => {
-      // get category details
-      getCategoryById (cat_id).then (res => {
-        if (res) {
-          setCategory (res.data);
-        } else {
-          navigate ('/dashboard/categories');
-        }
-      });
-      // get articles in this category
-      getArticleByCategoryId (cat_id).then (res => {
-        if (res) {
-          setArticles (res.data);
-        }
-      });
-    },
-    [cat_id]
-  );
+  useEffect(() => {
+    // get category details
+    getCategoryById(cat_id).then((res) => {
+      if (res) {
+        setCategory(res.data);
+      } else {
+        navigate("/dashboard/categories");
+      }
+    });
+    // get articles in this category
+    getArticleByCategoryId(cat_id).then((res) => {
+      if (res) {
+        setArticles(res.data);
+      }
+    });
+  }, [cat_id]);
 
   const handleUpdateCategory = () => {
-    updateCategoryById (cat_id, category).then (res => {
+    updateCategoryById(cat_id, category).then((res) => {
       if (res) {
-        alert ('Category updated successfully!');
+        alert("Category updated successfully!");
       } else {
-        alert ('Failed to update category.');
+        alert("Failed to update category.");
       }
     });
   };
@@ -50,7 +47,7 @@ const CategoryView = () => {
     <div className="min-h-screen w-full px-6 py-10 bg-gradient-to-b from-gray-900 to-gray-800 text-white">
       <BreadCrumb
         prev_name="Categories"
-        prev_link={'/dashboard/categories'}
+        prev_link={"/dashboard/categories"}
         next_name={category.name}
         next_link=""
       />
@@ -70,20 +67,22 @@ const CategoryView = () => {
           <input
             className="text-3xl font-bold text-orange-400 focus:outline-none w-full bg-gray-800 p-4 rounded-lg"
             value={category.name}
-            onChange={e => setCategory ({...category, name: e.target.value})}
+            onChange={(e) => setCategory({ ...category, name: e.target.value })}
           />
           <input
             className="text-gray-300 w-full bg-gray-800 p-4 rounded-lg focus:outline-none"
             value={category.description}
-            onChange={e =>
-              setCategory ({...category, description: e.target.value})}
+            onChange={(e) =>
+              setCategory({ ...category, description: e.target.value })
+            }
           />
           <input
             className="text-gray-400 w-full bg-gray-800 p-4 rounded-lg focus:outline-none"
             type="text"
             value={category.imageUrl}
-            onChange={e =>
-              setCategory ({...category, imageUrl: e.target.value})}
+            onChange={(e) =>
+              setCategory({ ...category, imageUrl: e.target.value })
+            }
           />
 
           <div className="flex items-center justify-end space-x-4">
@@ -105,11 +104,13 @@ const CategoryView = () => {
 
       {/* Article List */}
       <div className="max-w-5xl mx-auto mt-10 grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        {articles.length === 0
-          ? <p className="text-gray-400">No articles found in this category.</p>
-          : articles.map (article => (
-              <ArticleCard key={article.id} article={article} />
-            ))}
+        {articles.length === 0 ? (
+          <p className="text-gray-400">No articles found in this category.</p>
+        ) : (
+          articles.map((article) => (
+            <ArticleCard key={article.id} article={article} />
+          ))
+        )}
       </div>
     </div>
   );
@@ -117,13 +118,9 @@ const CategoryView = () => {
 
 export default CategoryView;
 
-const ArticleCard = ({article}) => (
+const ArticleCard = ({ article }) => (
   <div className="bg-gray-700 hover:bg-gray-600 transition rounded-lg p-4 shadow-sm border border-gray-600 hover:border-orange-400 cursor-pointer">
-    <h3 className="text-lg font-semibold text-white mb-2">
-      {article.title}
-    </h3>
-    <p className="text-sm text-gray-300">
-      {article.description}
-    </p>
+    <h3 className="text-lg font-semibold text-white mb-2">{article.title}</h3>
+    <p className="text-sm text-gray-300">{article.description}</p>
   </div>
 );

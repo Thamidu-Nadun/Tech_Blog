@@ -1,8 +1,8 @@
-import {ChevronRight, Home} from 'lucide-react';
-import React from 'react';
-import {Link} from 'react-router-dom';
+import { ChevronRight, Home } from "lucide-react";
+import React from "react";
+import { Link } from "react-router-dom";
 
-function BreadCrumb({prev_link, next_link, prev_name, next_name}) {
+function BreadCrumb({ prev_link, next_link, prev_name, next_name }) {
   return (
     <div className="inline-block">
       <div className="absolute flex flex-wrap justify-center items-center space-x-2 text-sm text-gray-100 font-medium">
@@ -12,7 +12,9 @@ function BreadCrumb({prev_link, next_link, prev_name, next_name}) {
         <ChevronRight size={24} />
         <Link to={prev_link}>{prev_name}</Link>
         <ChevronRight size={24} />
-        <Link to={next_link} className="text-orange-500">{next_name}</Link>
+        <Link to={next_link} className="text-orange-500">
+          {next_name}
+        </Link>
       </div>
     </div>
   );

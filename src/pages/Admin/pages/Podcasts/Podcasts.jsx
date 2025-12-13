@@ -1,51 +1,55 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-import {Plus, PlayCircle, MoreVertical, MoreHorizontal} from 'lucide-react';
+import React from "react";
+import { Link } from "react-router-dom";
+import { Plus, PlayCircle, MoreVertical, MoreHorizontal } from "lucide-react";
 
 const podcasts = [
   {
     id: 1,
-    title: 'The Future of Web Development',
-    author: 'John Doe',
-    date: '2025-07-15',
-    duration: '45:30',
-    status: 'Published',
-    imageUrl: 'https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=400&h=400&fit=crop',
-    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+    title: "The Future of Web Development",
+    author: "John Doe",
+    date: "2025-07-15",
+    duration: "45:30",
+    status: "Published",
+    imageUrl:
+      "https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=400&h=400&fit=crop",
+    audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
   },
   {
     id: 2,
-    title: 'A Deep Dive into React Hooks',
-    author: 'Jane Smith',
-    date: '2025-07-16',
-    duration: '60:15',
-    status: 'Draft',
-    imageUrl: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=400&fit=crop',
-    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+    title: "A Deep Dive into React Hooks",
+    author: "Jane Smith",
+    date: "2025-07-16",
+    duration: "60:15",
+    status: "Draft",
+    imageUrl:
+      "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=400&fit=crop",
+    audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
   },
   {
     id: 3,
-    title: 'Mastering CSS Grid Layout',
-    author: 'Sam Wilson',
-    date: '2025-07-17',
-    duration: '35:00',
-    status: 'Published',
-    imageUrl: 'https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=400&h=400&fit=crop',
-    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+    title: "Mastering CSS Grid Layout",
+    author: "Sam Wilson",
+    date: "2025-07-17",
+    duration: "35:00",
+    status: "Published",
+    imageUrl:
+      "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=400&h=400&fit=crop",
+    audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
   },
   {
     id: 4,
-    title: 'The Art of UI/UX Design',
-    author: 'Alice Johnson',
-    date: '2025-07-18',
-    duration: '55:45',
-    status: 'Draft',
-    imageUrl: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=400&h=400&fit=crop',
-    audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
+    title: "The Art of UI/UX Design",
+    author: "Alice Johnson",
+    date: "2025-07-18",
+    duration: "55:45",
+    status: "Draft",
+    imageUrl:
+      "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=400&h=400&fit=crop",
+    audioUrl: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3",
   },
 ];
 
-function Podcasts () {
+function Podcasts() {
   return (
     <div className="container mx-auto p-4 sm:p-6 lg:p-8">
       <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-white">
@@ -64,7 +68,7 @@ function Podcasts () {
   );
 }
 
-const PodcastCard = ({podcast}) => {
+const PodcastCard = ({ podcast }) => {
   return (
     <div className="bg-slate-900 text-gray-400/20 rounded-2xl overflow-hidden shadow-lg group transform hover:-translate-y-2 transition-transform duration-300 ease-in-out flex flex-col">
       <table>
@@ -79,11 +83,11 @@ const PodcastCard = ({podcast}) => {
           </tr>
         </thead>
         <tbody>
-          {podcast.map (item => {
-            let date = new Date (item.date).toLocaleDateString ('en-US', {
-              month: 'short',
-              day: 'numeric',
-              year: 'numeric',
+          {podcast.map((item) => {
+            let date = new Date(item.date).toLocaleDateString("en-US", {
+              month: "short",
+              day: "numeric",
+              year: "numeric",
             });
 
             return (

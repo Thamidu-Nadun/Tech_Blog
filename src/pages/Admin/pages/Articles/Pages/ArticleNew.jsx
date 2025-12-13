@@ -1,38 +1,38 @@
-import React, {useState} from 'react';
-import BreadCrumb from '../../../../../Components/BreadCrumb/BreadCrumb';
-import {Calendar, Heading, Image, User} from 'lucide-react';
-import Preview from './Components/Preview';
+import React, { useState } from "react";
+import BreadCrumb from "../../../../../Components/BreadCrumb/BreadCrumb";
+import { Calendar, Heading, Image, User } from "lucide-react";
+import Preview from "./Components/Preview";
 
 const ArticleNew = () => {
-  const [formContent, setFormContent] = useState ({
-    title: '',
-    date: '',
-    author: 'Nadun',
-    image: '',
-    content: '',
+  const [formContent, setFormContent] = useState({
+    title: "",
+    date: "",
+    author: "Nadun",
+    image: "",
+    content: "",
   });
 
-  const [isPreviewMode, setIsPreviewMode] = useState (false);
+  const [isPreviewMode, setIsPreviewMode] = useState(false);
 
   const handleChange = (field, value) => {
-    setFormContent (prev => ({
+    setFormContent((prev) => ({
       ...prev,
-      [field.toLowerCase ()]: value, // assuming field matches formContent keys
+      [field.toLowerCase()]: value, // assuming field matches formContent keys
     }));
   };
 
-  const handleSubmit = e => {
-    e.preventDefault ();
-    console.log ('Submitted Data:', formContent);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Submitted Data:", formContent);
   };
 
   return (
     <div className="w-full p-4">
       <BreadCrumb
-        prev_name={'DashBoard'}
-        prev_link={'/dashboard'}
-        next_name={'Articles'}
-        next_link={'/dashboard/articles'}
+        prev_name={"DashBoard"}
+        prev_link={"/dashboard"}
+        next_name={"Articles"}
+        next_link={"/dashboard/articles"}
       />
       <div className="mt-15 ml-4 px-5">
         <h2 className="text-2xl">Create New Article</h2>
@@ -72,35 +72,38 @@ const ArticleNew = () => {
             <div className="btn-group my-4 w-full flex justify-end md:justify-start">
               <button
                 type="button"
-                className={`${!isPreviewMode ? 'bg-orange-400' : 'bg-amber-400/20'} border border-orange-400 px-2 py-1 rounded mx-2`}
-                onClick={() => setIsPreviewMode (false)}
+                className={`${!isPreviewMode ? "bg-orange-400" : "bg-amber-400/20"} border border-orange-400 px-2 py-1 rounded mx-2`}
+                onClick={() => setIsPreviewMode(false)}
               >
                 Edit
               </button>
               <button
                 type="button"
-                className={`${isPreviewMode ? 'bg-orange-400' : 'bg-orange-400/20'} border border-orange-400 px-2 py-1 rounded mx-2`}
-                onClick={() => setIsPreviewMode (true)}
+                className={`${isPreviewMode ? "bg-orange-400" : "bg-orange-400/20"} border border-orange-400 px-2 py-1 rounded mx-2`}
+                onClick={() => setIsPreviewMode(true)}
               >
                 Preview
               </button>
             </div>
 
-            {!isPreviewMode
-              ? <div className="editor-edit h-full">
-                  <textarea
-                    value={formContent.content}
-                    onChange={e =>
-                      setFormContent (prev => ({
-                        ...prev,
-                        content: e.target.value,
-                      }))}
-                    name="editor"
-                    id="editor"
-                    className="w-full h-full resize-none p-2 bg-gray-700/20 outline-none border border-orange-400"
-                  />
-                </div>
-              : <Preview content={formContent.content} />}
+            {!isPreviewMode ? (
+              <div className="editor-edit h-full">
+                <textarea
+                  value={formContent.content}
+                  onChange={(e) =>
+                    setFormContent((prev) => ({
+                      ...prev,
+                      content: e.target.value,
+                    }))
+                  }
+                  name="editor"
+                  id="editor"
+                  className="w-full h-full resize-none p-2 bg-gray-700/20 outline-none border border-orange-400"
+                />
+              </div>
+            ) : (
+              <Preview content={formContent.content} />
+            )}
           </div>
 
           <div className="btn-group mt-25 flex gap-2 w-full justify-end md:justify-start">
@@ -114,13 +117,14 @@ const ArticleNew = () => {
               type="button"
               className="px-3 py-2 bg-red-500 hover:bg-red-500/80 text-white rounded"
               onClick={() =>
-                setFormContent ({
-                  title: '',
-                  date: '',
-                  author: 'Nadun',
-                  image: '',
-                  content: '',
-                })}
+                setFormContent({
+                  title: "",
+                  date: "",
+                  author: "Nadun",
+                  image: "",
+                  content: "",
+                })
+              }
             >
               Discard
             </button>
@@ -134,10 +138,10 @@ const ArticleNew = () => {
 export default ArticleNew;
 
 const InputGroup = ({
-  input_name = 'title',
-  input_type = 'text',
+  input_name = "title",
+  input_type = "text",
   Icon = Heading,
-  value = '',
+  value = "",
   onChange,
 }) => (
   <div className="flex items-center text-orange-300 my-2 border bg-indigo-500/5 border-gray-500/10 rounded gap-1 pl-2">
@@ -146,9 +150,9 @@ const InputGroup = ({
       className="w-full outline-none bg-transparent py-2.5 pl-2 border border-transparent focus:border-indigo-400 invalid:border-red-400 valid:border-green-400"
       type={input_type}
       placeholder={input_name}
-      name={input_name.toLowerCase ()}
+      name={input_name.toLowerCase()}
       value={value}
-      onChange={e => onChange (input_name, e.target.value)}
+      onChange={(e) => onChange(input_name, e.target.value)}
       required
     />
   </div>

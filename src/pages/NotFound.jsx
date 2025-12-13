@@ -1,12 +1,12 @@
-import React, {use, useEffect, useRef} from 'react';
-import {Link} from 'react-router-dom';
-import {Home} from 'lucide-react';
-import * as THREE from 'three';
+import React, { use, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
+import { Home } from "lucide-react";
+import * as THREE from "three";
 
-function NotFound () {
-  const canvasRef = useRef (null);
+function NotFound() {
+  const canvasRef = useRef(null);
 
-  useEffect (() => {
+  useEffect(() => {
     if (!canvasRef.current) return;
 
     const canvas = canvasRef.current;
@@ -15,64 +15,64 @@ function NotFound () {
       width: window.innerWidth,
       height: window.innerHeight,
     };
-    const mouse = {x: 0, y: 0};
-    window.addEventListener ('mousemove', e => {
-      (mouse.x = e.clientX / sizes.width - 0.5), (mouse.y =
-        e.clientY / sizes.height - 0.5);
+    const mouse = { x: 0, y: 0 };
+    window.addEventListener("mousemove", (e) => {
+      ((mouse.x = e.clientX / sizes.width - 0.5),
+        (mouse.y = e.clientY / sizes.height - 0.5));
     });
-    const scene = new THREE.Scene ();
+    const scene = new THREE.Scene();
 
-    const geometry = new THREE.TorusKnotGeometry (0.6, 0.25, 100, 16);
-    const material = new THREE.MeshNormalMaterial ();
-    const mesh = new THREE.Mesh (geometry, material);
+    const geometry = new THREE.TorusKnotGeometry(0.6, 0.25, 100, 16);
+    const material = new THREE.MeshNormalMaterial();
+    const mesh = new THREE.Mesh(geometry, material);
     mesh.position.y = 1;
-    scene.add (mesh);
+    scene.add(mesh);
 
-    const camera = new THREE.PerspectiveCamera (
+    const camera = new THREE.PerspectiveCamera(
       75,
       sizes.width / sizes.height,
       0.1,
-      50
+      50,
     );
     camera.position.z = 4;
-    scene.add (camera);
+    scene.add(camera);
 
-    const renderer = new THREE.WebGLRenderer ({
+    const renderer = new THREE.WebGLRenderer({
       canvas: canvas,
       alpha: true, // Make canvas transparent to see background styles
     });
-    renderer.setSize (sizes.width, sizes.height);
-    renderer.setPixelRatio (Math.min (window.devicePixelRatio, 2));
+    renderer.setSize(sizes.width, sizes.height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
     const loop = () => {
       mesh.rotation.y = mouse.x * 4;
       mesh.rotation.x = mouse.y * 2;
       mesh.position.x = mouse.x * 5;
       mesh.position.y = -(mouse.y * 5);
-      renderer.render (scene, camera);
-      requestAnimationFrame (loop);
+      renderer.render(scene, camera);
+      requestAnimationFrame(loop);
     };
-    loop ();
+    loop();
 
     const handleResize = () => {
       sizes.width = window.innerWidth;
       sizes.height = window.innerHeight;
 
       camera.aspect = sizes.width / sizes.height;
-      camera.updateProjectionMatrix ();
+      camera.updateProjectionMatrix();
 
-      renderer.setSize (sizes.width, sizes.height);
-      renderer.setPixelRatio (Math.min (window.devicePixelRatio, 2));
+      renderer.setSize(sizes.width, sizes.height);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     };
 
-    window.addEventListener ('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Cleanup function to run when the component unmounts
     return () => {
-      window.removeEventListener ('resize', handleResize);
-      renderer.dispose ();
-      geometry.dispose ();
-      material.dispose ();
+      window.removeEventListener("resize", handleResize);
+      renderer.dispose();
+      geometry.dispose();
+      material.dispose();
     };
   }, []); // Empty dependency array ensures this runs only once
 
@@ -97,7 +97,8 @@ function NotFound () {
           Lost in the Digital Cosmos
         </p>
         <p className="mt-4 text-lg text-gray-400">
-          It seems you've ventured into uncharted territory. Let's get you back on track.
+          It seems you've ventured into uncharted territory. Let's get you back
+          on track.
         </p>
         <Link
           to="/"

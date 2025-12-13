@@ -1,41 +1,41 @@
-import React from 'react';
+import React from "react";
 
 const comments = [
   {
     id: 1,
-    author: 'John Doe',
-    email: 'john.doe@example.com',
-    comment: 'This is a great article! Thanks for sharing.',
-    date: '2025-07-15',
-    status: 'Approved',
+    author: "John Doe",
+    email: "john.doe@example.com",
+    comment: "This is a great article! Thanks for sharing.",
+    date: "2025-07-15",
+    status: "Approved",
   },
   {
     id: 2,
-    author: 'Jane Smith',
-    email: 'jane.smith@example.com',
-    comment: 'I have a question about the second paragraph. Can you elaborate?',
-    date: '2025-07-16',
-    status: 'Pending',
+    author: "Jane Smith",
+    email: "jane.smith@example.com",
+    comment: "I have a question about the second paragraph. Can you elaborate?",
+    date: "2025-07-16",
+    status: "Pending",
   },
   {
     id: 3,
-    author: 'Sam Wilson',
-    email: 'sam.wilson@example.com',
-    comment: 'I found a typo in the conclusion.',
-    date: '2025-07-17',
-    status: 'Approved',
+    author: "Sam Wilson",
+    email: "sam.wilson@example.com",
+    comment: "I found a typo in the conclusion.",
+    date: "2025-07-17",
+    status: "Approved",
   },
   {
     id: 4,
-    author: 'Alice Johnson',
-    email: 'alice.johnson@example.com',
-    comment: 'This was very helpful. Looking forward to more content.',
-    date: '2025-07-18',
-    status: 'Pending',
+    author: "Alice Johnson",
+    email: "alice.johnson@example.com",
+    comment: "This was very helpful. Looking forward to more content.",
+    date: "2025-07-18",
+    status: "Pending",
   },
 ];
 
-function Comments () {
+function Comments() {
   return (
     <div className="container mx-auto p-4 sm:p-6 lg:p-8">
       <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6">Comments</h1>
@@ -64,7 +64,7 @@ function Comments () {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">
-            {comments.map (comment => (
+            {comments.map((comment) => (
               <tr key={comment.id}>
                 <td className="px-4 py-2 sm:px-6 sm:py-4 whitespace-nowrap text-sm text-gray-900">
                   {comment.id}
@@ -81,7 +81,7 @@ function Comments () {
                 </td>
                 <td className="px-4 py-2 sm:px-6 sm:py-4 whitespace-nowrap">
                   <span
-                    className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${comment.status === 'Approved' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}`}
+                    className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${comment.status === "Approved" ? "bg-green-100 text-green-800" : "bg-yellow-100 text-yellow-800"}`}
                   >
                     {comment.status}
                   </span>

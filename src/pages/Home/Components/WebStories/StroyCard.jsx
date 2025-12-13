@@ -1,6 +1,6 @@
-import {BookOpenText, Eye} from 'lucide-react';
-import React from 'react';
-import './WebStories.css';
+import { BookOpenText, Eye } from "lucide-react";
+import React from "react";
+import "./WebStories.css";
 
 function StroyCard({
   story_title,
@@ -32,10 +32,12 @@ function StroyCard({
         </h3>
         <div className="flex justify-between items-center w-full my-2">
           <div className="views text-xs flex gap-1">
-            <Eye className="size-4" />{story_views}
+            <Eye className="size-4" />
+            {story_views}
           </div>
           <div className="type text-xs flex gap-1">
-            <BookOpenText className="size-3" />Story
+            <BookOpenText className="size-3" />
+            Story
           </div>
         </div>
       </div>
