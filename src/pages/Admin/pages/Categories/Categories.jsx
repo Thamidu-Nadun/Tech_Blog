@@ -1,23 +1,23 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Plus, Tag, MoreVertical } from "lucide-react";
-import { deleteCategoryById, getCategories } from "./util";
-import toast from "react-hot-toast";
+import React, {useEffect} from 'react';
+import {Link} from 'react-router-dom';
+import {Plus, Tag, MoreVertical} from 'lucide-react';
+import {deleteCategoryById, getCategories} from './util';
+import toast from 'react-hot-toast';
 
-function Categories() {
-  const [categories, setCategories] = React.useState([
+function Categories () {
+  const [categories, setCategories] = React.useState ([
     {
       id: 1,
-      name: "Technology",
-      description: "All about the latest in tech.",
-      imageUrl: "https://via.placeholder.com/100?text=Tech",
+      name: 'Technology',
+      description: 'All about the latest in tech.',
+      imageUrl: 'https://via.placeholder.com/100?text=Tech',
     },
   ]);
 
-  useEffect(() => {
-    getCategories().then((res) => {
-      console.log(res);
-      setCategories(res.data);
+  useEffect (() => {
+    getCategories ().then (res => {
+      console.log (res);
+      setCategories (res.data);
     });
   }, []);
   return (
@@ -26,7 +26,7 @@ function Categories() {
         Categories
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {categories.map((category) => (
+        {categories.map (category => (
           <CategoryCard
             key={category.id}
             category={category}
@@ -44,7 +44,7 @@ function Categories() {
   );
 }
 
-const CategoryCard = ({ category, setCategories }) => {
+const CategoryCard = ({category, setCategories}) => {
   return (
     <div className="bg-gray-800 rounded-2xl overflow-hidden shadow-lg group transform hover:-translate-y-2 transition-transform duration-300 ease-in-out flex flex-col items-center justify-center p-6">
       <img
@@ -55,7 +55,7 @@ const CategoryCard = ({ category, setCategories }) => {
       <h3 className="text-lg font-bold text-orange-400 mb-2 text-center">
         {category.name}
       </h3>
-      <p className="text-sm text-gray-400 text-center mb-4">
+      <p className="text-sm text-gray-400 text-center mb-4 line-clamp-3">
         {category.description}
       </p>
       <div className="flex justify-center gap-4 mt-auto">
@@ -68,14 +68,14 @@ const CategoryCard = ({ category, setCategories }) => {
         <button
           className="text-red-400 hover:text-red-600 hover:cursor-pointer"
           onClick={() => {
-            deleteCategoryById(category.id).then((res) => {
+            deleteCategoryById (category.id).then (res => {
               if (res) {
-                toast.success("Category deleted successfully");
-                setCategories((prev) =>
-                  prev.filter((cat) => cat.id != category.id),
+                toast.success ('Category deleted successfully');
+                setCategories (prev =>
+                  prev.filter (cat => cat.id != category.id)
                 );
               } else {
-                toast.error("Failed to delete category");
+                toast.error ('Failed to delete category');
               }
             });
           }}

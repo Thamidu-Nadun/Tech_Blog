@@ -146,51 +146,90 @@ const ArticleEdit = () => {
                 </div>
               : <Preview content={formContent.content} />}
           </div>
+          <div className="mt-20 rounded-2xl border border-amber-500/15 bg-linear-to-br from-orange-500/15 to-amber-500/5 p-6 md:p-8">
 
-          <div className="mt-20">
-            <label className="relative inline-flex cursor-pointer items-center gap-3 text-green-500">
-              <input
-                type="checkbox"
-                className="peer sr-only"
-                checked={Publish}
-                onChange={() => setPublish (prev => !prev)}
+            {/* Top Controls */}
+            <div className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+
+              {/* Publish Toggle */}
+              <div>
+                <label className="flex items-center gap-4 cursor-pointer group">
+                  <input
+                    type="checkbox"
+                    className="sr-only"
+                    checked={Publish}
+                    onChange={() => setPublish (prev => !prev)}
+                    aria-label="Toggle publish status"
+                  />
+
+                  <div className="relative h-7 w-12 rounded-full bg-amber-300/40 transition-colors duration-300 group-has-checked:bg-green-600">
+                    <span className="absolute top-1 left-1 h-5 w-5 rounded-full bg-white transition-transform duration-300 group-has-checked:translate-x-5" />
+                  </div>
+
+                  <div className="flex flex-col leading-tight">
+                    <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                      {Publish ? 'Published' : 'Draft'}
+                    </span>
+                    <span className="text-xs text-gray-500">
+                      Control visibility
+                    </span>
+                  </div>
+                </label>
+              </div>
+
+              {/* Category Select */}
+              <div className="w-full md:w-64">
+                <label className="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">
+                  Category
+                </label>
+
+                <div className="relative">
+                  <select
+                    name="category"
+                    ref={categoryRef}
+                    defaultValue=""
+                    className="w-full appearance-none text-amber-900 text-md rounded-lg border border-amber-500/20 bg-gray-100 px-3 py-2 outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-500/30"
+                  >
+                    <option value="" disabled>Select category</option>
+                    <option value="1">Technology</option>
+                    <option value="2">Health</option>
+                    <option value="3">Lifestyle</option>
+                    <option value="4">Education</option>
+                    <option value="5">Entertainment</option>
+                    <option value="6">Business</option>
+                    <option value="7">Travel</option>
+                    <option value="8">Food</option>
+                    <option value="9">Sports</option>
+                    <option value="10">Science</option>
+                  </select>
+
+                  {/* Custom Arrow */}
+                  <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-amber-600">
+                    ▼
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Tags Section */}
+            <div className="mt-10">
+              <h4 className="mb-2 text-sm font-semibold text-gray-700 dark:text-gray-300">
+                Tags
+              </h4>
+
+              <InputGroup
+                input_name="tags"
+                input_type="text"
+                Icon={Image}
+                value={formContent.tags}
+                onChange={handleChange}
+                className="bg-amber-500/5"
               />
-              <div className="peer h-7 w-12 rounded-full bg-amber-300/40 ring-offset-1 transition-colors duration-200 peer-checked:bg-green-600" />
-              <span className="dot absolute top-1 left-1 h-5 w-5 rounded-full bg-amber-500 peer-checked:bg-white transition-transform duration-200 ease-in-out peer-checked:translate-x-5" />
-              Publish
-            </label>
-          </div>
 
-          <div className="mt-4">
-            <select
-              name="category"
-              ref={categoryRef}
-              className="mt-4 p-2 border border-amber-500/10 rounded bg-amber-500/5"
-              defaultValue={''}
-            >
-              <option value="" disabled>Select Category</option>
-              <option value="1">Technology</option>
-              <option value="2">Health</option>
-              <option value="3">Lifestyle</option>
-              <option value="4">Education</option>
-              <option value="5">Entertainment</option>
-              <option value="6">Business</option>
-              <option value="7">Travel</option>
-              <option value="8">Food</option>
-              <option value="9">Sports</option>
-              <option value="10">Science</option>
-            </select>
-          </div>
-
-          <div>
-            <h4 className="mt-10 mb-2">Tags</h4>
-            <InputGroup
-              input_name="Tags"
-              input_type="text"
-              Icon={Image}
-              value={formContent.tags}
-              onChange={handleChange}
-            />
+              <p className="mt-1 text-xs text-gray-500">
+                Separate tags with commas (e.g. design, react, ui)
+              </p>
+            </div>
           </div>
 
           <div className="btn-group mt-25 flex gap-2 w-full justify-end md:justify-start">

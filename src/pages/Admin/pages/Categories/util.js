@@ -41,6 +41,31 @@ const getCategoryById = async (id) => {
   }
 };
 
+/** * Saves a new category to the API.
+ * @param {Object} category - The category data to save.
+ * @returns {Promise<Object|null>} The saved category object or null if save failed.
+ */
+const saveCategory = async (category) => {
+  try {
+    let res = await fetch(`${BASE_URL}categories/save`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: category.name,
+        description: category.description,
+        imageUrl: category.imageUrl,
+      }),
+    });
+    let data = await res.json();
+    return data;
+  } catch (error) {
+    console.error("Error creating category:", error);
+    return null;
+  }
+};
+
 /** * Updates a category by its ID.
  * @param {string} id - The ID of the category to update.
  * @param {Object} category - The category data to update.
@@ -91,6 +116,7 @@ const deleteCategoryById = async (id) => {
 export {
   getCategories,
   getCategoryById,
+  saveCategory,
   updateCategoryById,
   deleteCategoryById,
 };

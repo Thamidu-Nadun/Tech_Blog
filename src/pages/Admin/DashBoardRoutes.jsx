@@ -1,19 +1,20 @@
-import React from "react";
-import { Route } from "react-router-dom";
+import React from 'react';
+import {Route} from 'react-router-dom';
 
 /**
  * Components
  */
-import AdminDashboardLayout from "../../Layout/AdminDashboardLayout";
-import DashboardPage from "./Admin";
-import ArticlesPage from "./pages/Articles/Articles";
-import PodcastsPage from "./pages/Podcasts/Podcasts";
-import WebStoriesPage from "./pages/WebStories/WebStories";
-import CategoryPage from "./pages/Categories/Categories";
-import CommentsPage from "./pages/Comments/Comments";
-import CategoryView from "./pages/Categories/CategoryView";
-import ArticleNew from "./pages/Articles/Pages/ArticleNew";
-import ArticleEdit from "./pages/Articles/Pages/ArticleEdit";
+import AdminDashboardLayout from '../../Layout/AdminDashboardLayout';
+import DashboardPage from './Admin';
+import ArticlesPage from './pages/Articles/Articles';
+import PodcastsPage from './pages/Podcasts/Podcasts';
+import WebStoriesPage from './pages/WebStories/WebStories';
+import CategoryPage from './pages/Categories/Categories';
+import CommentsPage from './pages/Comments/Comments';
+import CategoryView from './pages/Categories/CategoryView';
+import ArticleNew from './pages/Articles/Pages/ArticleNew';
+import ArticleEdit from './pages/Articles/Pages/ArticleEdit';
+import CategoryNew from './pages/Categories/CategoryNew';
 
 const DashBoardRoutes = (
   <Route path="/dashboard" element={<AdminDashboardLayout />}>
@@ -27,6 +28,7 @@ const DashBoardRoutes = (
     <Route path="stories" element={<WebStoriesPage />} />
     <Route path="categories">
       <Route index element={<CategoryPage />} />
+      <Route path="new" element={<CategoryNew />} />
       <Route path="edit/:cat_id" element={<CategoryView />} />
     </Route>
     <Route path="comments" element={<CommentsPage />} />

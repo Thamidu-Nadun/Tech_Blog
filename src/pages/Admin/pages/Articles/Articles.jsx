@@ -81,7 +81,10 @@ export default function Articles() {
       </div>
       <Link
         to="/dashboard/articles/new"
-        className="fixed bottom-10 right-10 bg-orange-500 text-white p-4 rounded-full shadow-lg hover:bg-orange-600 transition-colors duration-300 ease-in-out"
+        className="fixed bottom-10 z-100 left-0 md:left-auto md:bottom-5 md:right-10 flex items-center justify-center
+         bg-orange-500 text-white p-4 rounded-full 
+        shadow-lg hover:bg-orange-600 transition-colors duration-300 ease-in-out
+        "
       >
         <Plus size={24} />
       </Link>
