@@ -17,6 +17,22 @@ const getArticles = async () => {
     }
 };
 
+const getArticleById = async (articleId) => {
+    try {
+        let res = await fetch(`${BASE_URL}articles/${articleId}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        let data = await res.json();
+        return data;
+    } catch (error) {
+        console.error(`Error fetching article with id ${articleId}:`, error);
+        return null;
+    }
+};
+
 const getArticleByCategoryId = async (categoryId) => {
     try {
         let res = await fetch(`${BASE_URL}articles/category?catId=${categoryId}`, {
@@ -66,6 +82,32 @@ const saveArticle = async (article, isPublished, categoryId) => {
     }
 };
 
+const updateArticle = async (articleId, article, isPublished, categoryId) => {
+    let payload = {
+        "title": article.title,
+        "description": article.description,
+        "coverImageUrl": article.image,
+        "published": isPublished,
+        "categoryId": categoryId || 1,
+        "tags": article.tags.toString(),
+        "body": article.content,
+    }
+    try {
+        let res = await fetch(`${BASE_URL}articles/update/${articleId}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+        });
+        let data = await res.json();
+        return data;
+    } catch (error) {
+        console.error(`Error updating article with id ${articleId}:`, error);
+        return null;
+    }
+};
+
 const deleteArticleById = async (articleId) => {
     try {
         let res = await fetch(`${BASE_URL}articles/delete/${articleId}`, {
@@ -82,4 +124,11 @@ const deleteArticleById = async (articleId) => {
     }
 };
 
-export { getArticles, saveArticle, getArticleByCategoryId, deleteArticleById };
+export {
+    getArticles,
+    getArticleById,
+    getArticleByCategoryId,
+    saveArticle,
+    updateArticle,
+    deleteArticleById
+};
