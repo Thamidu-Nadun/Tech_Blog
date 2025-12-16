@@ -64,7 +64,7 @@ function Navbar () {
         <button className="px-4 py-2 rounded-2xl text-white hidden md:block border border-orange-400 hover:scale-105 transition-all duration-300">
           Log In
         </button>
-        <button className="px-4 py-2 rounded-2xl text-white hidden md:block bg-gradient-to-r from-orange-600 to-orange-400 hover:scale-105 transition-all duration-300">
+        <button className="px-4 py-2 rounded-2xl text-white hidden md:block bg-linear-to-r from-orange-600 to-orange-400 hover:scale-105 transition-all duration-300">
           Sign Up
         </button>
       </div>
@@ -109,7 +109,7 @@ function Navbar () {
               </ul>
               <button
                 type="button"
-                className="bg-gradient-to-r from-orange-500 to-orange-400 text-white mt-6 text-sm hover:from-orange-600 hover:to-orange-500 active:scale-95 transition-all w-40 h-11 rounded-full"
+                className="bg-linear-to-r from-orange-500 to-orange-400 text-white mt-6 text-sm hover:from-orange-600 hover:to-orange-500 active:scale-95 transition-all w-40 h-11 rounded-full"
               >
                 Get started
               </button>
