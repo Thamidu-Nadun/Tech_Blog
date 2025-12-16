@@ -1,26 +1,21 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
-import NotFound from "./pages/NotFound";
-/**
- * Main Components
- */
-import MainLayout from "./Layout/MainLayout";
-import Home from "./pages/Home/Home";
-import Article from "./pages/Article/Article";
+import {lazy} from 'react';
+import {Route, Routes} from 'react-router-dom';
+import {Toaster} from 'react-hot-toast';
 
-/**
- * Dashboard - Admin
- */
-import DashBoardRoutes from "./pages/Admin/DashBoardRoutes";
-import { Toaster } from "react-hot-toast";
-function App() {
+const MainLayout = lazy (() => import ('./Layout/MainLayout'));
+const Home = lazy (() => import ('./pages/Home/Home'));
+const Article = lazy (() => import ('./pages/Article/Article'));
+const NotFound = lazy (() => import ('./pages/NotFound'));
+const DashBoardRoutes = lazy (() => import ('./pages/Admin/DashBoardRoutes'));
+
+function App () {
   return (
     <div className="bg-gray-950 overflow-x-hidden">
       <Toaster
         position="bottom-right"
         toastOptions={{
           duration: 1500,
-          style: { background: "#333", color: "#fff" },
+          style: {background: '#333', color: '#fff'},
         }}
       />
       <Routes>

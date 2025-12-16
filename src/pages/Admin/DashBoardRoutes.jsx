@@ -1,20 +1,19 @@
-import React from 'react';
+import React, {lazy} from 'react';
 import {Route} from 'react-router-dom';
 
-/**
- * Components
- */
-import AdminDashboardLayout from '../../Layout/AdminDashboardLayout';
-import DashboardPage from './Admin';
-import ArticlesPage from './pages/Articles/Articles';
-import PodcastsPage from './pages/Podcasts/Podcasts';
-import WebStoriesPage from './pages/WebStories/WebStories';
-import CategoryPage from './pages/Categories/Categories';
-import CommentsPage from './pages/Comments/Comments';
-import CategoryView from './pages/Categories/CategoryView';
-import ArticleNew from './pages/Articles/Pages/ArticleNew';
-import ArticleEdit from './pages/Articles/Pages/ArticleEdit';
-import CategoryNew from './pages/Categories/CategoryNew';
+const AdminDashboardLayout = lazy (() =>
+  import ('../../Layout/AdminDashboardLayout')
+);
+const DashboardPage = lazy (() => import ('./Admin'));
+const ArticlesPage = lazy (() => import ('./pages/Articles/Articles'));
+const PodcastsPage = lazy (() => import ('./pages/Podcasts/Podcasts'));
+const WebStoriesPage = lazy (() => import ('./pages/WebStories/WebStories'));
+const CategoryPage = lazy (() => import ('./pages/Categories/Categories'));
+const CommentsPage = lazy (() => import ('./pages/Comments/Comments'));
+const CategoryView = lazy (() => import ('./pages/Categories/CategoryView'));
+const ArticleNew = lazy (() => import ('./pages/Articles/Pages/ArticleNew'));
+const ArticleEdit = lazy (() => import ('./pages/Articles/Pages/ArticleEdit'));
+const CategoryNew = lazy (() => import ('./pages/Categories/CategoryNew'));
 
 const DashBoardRoutes = (
   <Route path="/dashboard" element={<AdminDashboardLayout />}>
