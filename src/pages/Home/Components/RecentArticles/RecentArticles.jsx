@@ -6,11 +6,11 @@ function RecentArticles () {
   const [recentPosts, setRecentPosts] = useState ([]);
 
   const getPosts = async () => {
-    const BASE_URL = import.meta.env.VITE_API_BASE_URL;
+    const BASE_URL = import.meta.env.VITE_API_URL;
     try {
-      const res = await fetch (`http://localhost:8080/api/v1/articles/latest?page=0&size=4`, {
+      const res = await fetch (`${BASE_URL}articles/latest?page=0&size=4`, {
         method: 'GET',
-        });
+      });
       const data = await res.json ();
       setRecentPosts (data.data.content);
     } catch (error) {
@@ -21,8 +21,6 @@ function RecentArticles () {
   useEffect (() => {
     getPosts ();
   }, []);
-
-  // const recentPosts = posts.slice (0, 4);
   return (
     <Section section_title="Recent Articles">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
