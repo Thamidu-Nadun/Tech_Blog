@@ -25,7 +25,7 @@ function FeaturedArticles({autoScroll = false, autoScrollDuration = 3000}) {
         `${BASE_URL}articles/popular?page=0&size=2`
       );
       const data = await res.json();
-      setFeaturedPosts (data.data.content);
+      setFeaturedPosts(data.data.content);
     } catch (error) {
       console.log (error);
     }
@@ -90,7 +90,7 @@ function FeaturedArticles({autoScroll = false, autoScrollDuration = 3000}) {
                 article_date={post.date}
                 article_read_time={post.readTime}
                 article_views={post.views}
-                article_category={post.category}
+                article_category={post.category?.name}
               />
             </div>
           ))}

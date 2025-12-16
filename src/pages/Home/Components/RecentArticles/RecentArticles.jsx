@@ -34,7 +34,7 @@ function RecentArticles () {
             article_date={post.date}
             article_read_time={post.readTime}
             article_views="1K"
-            article_author={post.author}
+            article_author={post.authorId?.name}
           />
         ))}
       </div>

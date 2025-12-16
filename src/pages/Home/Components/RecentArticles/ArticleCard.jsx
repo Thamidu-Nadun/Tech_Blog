@@ -58,7 +58,7 @@ function ArticleCard({
             <User size={15} />
             {article_author}
           </span>
-          <span className="article_read_time flex gap-2">
+          <span className="article_read_time flex gap-2 mr-4">
             <Clock size={15} />
             {article_read_time} min read
           </span>
