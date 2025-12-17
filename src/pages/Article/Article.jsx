@@ -10,27 +10,81 @@ import 'prismjs/components/prism-javascript';
 import 'prismjs/plugins/toolbar/prism-toolbar';
 import 'prismjs/plugins/toolbar/prism-toolbar.css';
 import 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard';
+import {useParams} from 'react-router-dom';
+import {getArticle} from './util';
 
 function Article () {
+  const {slug} = useParams ();
+  const [mainImage, setMainImage] = useState (null);
   const [content, setContent] = useState ('');
-  useEffect (() => {
-    fetch ('/article.md')
-      .then (res => res.text ())
-      .then (data => data.replaceAll ('==', '<u>').replaceAll ('==!', '</u>'))
-      .then (data => setContent (renderer (data).html));
-  }, []);
+  const [error, setError] = useState (null);
+  const [loading, setLoading] = useState (true);
+  useEffect (
+    () => {
+      let isMounted = true;
+
+      const fetchArticle = async () => {
+        try {
+          const article = await getArticle (slug);
+
+          if (!article) throw new Error ('Failed to fetch article');
+
+          if (article.code === 404) throw new Error ('Article not found');
+
+          if (isMounted) {
+            setMainImage (article.data.coverImage);
+            const renderedContent = renderer (article.data.body).html;
+            setContent (renderedContent);
+          }
+        } catch (err) {
+          if (isMounted) {
+            setError (err.message);
+          }
+        } finally {
+          if (isMounted) {
+            setLoading (false);
+          }
+        }
+      };
+
+      fetchArticle ();
+
+      return () => {
+        isMounted = false;
+      };
+    },
+    [slug]
+  );
+
   useEffect (
     () => {
       Prismjs.highlightAll ();
     },
     [content]
   );
-  const main_image =
-    'https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=400&h=250&fit=crop';
+
+  if (loading) {
+    return <div className="text-center mt-20 text-white">Loading...</div>;
+  }
+
+  if (error) {
+    return (
+      <div className="mt-42 text-center h-96 flex flex-col items-center justify-center">
+        <h2 className="text-6xl font-bold bg-linear-to-r from-amber-300 to-amber-500 
+        bg-clip-text text-transparent mb-4">
+          Techno
+        </h2>
+        <div className="text-xl mt-1 bg-linear-to-r from-amber-300 to-amber-500 bg-clip-text text-transparent font-bold">
+          {error}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col items-center gap-4 relative top-16 p-4 max-w-3xl mx-auto 
     border-b border-amber-500/20">
-      <img src={main_image} alt="" className="rounded w-full" />
+      <img src={mainImage} alt="" className="rounded w-full" />
       <div
         className="article-body"
         dangerouslySetInnerHTML={{__html: content}}

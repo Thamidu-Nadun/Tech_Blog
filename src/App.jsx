@@ -22,7 +22,7 @@ function App () {
         {/* Main */}
         <Route element={<MainLayout />}>
           <Route index element={<Home />} />
-          <Route path="article" element={<Article />} />
+          <Route path="article/:slug" element={<Article />} />
           <Route path="*" element={<NotFound />} />
         </Route>
         {/* Dashboard - Admin */}
