@@ -4,6 +4,7 @@ const getArticles = async () => {
     try {
         let res = await fetch(`${BASE_URL}articles/`, {
             method: "GET",
+            credentials: "include",
             headers: {
                 "Content-Type": "application/json",
             },
@@ -21,6 +22,7 @@ const getArticleById = async (articleId) => {
     try {
         let res = await fetch(`${BASE_URL}articles/${articleId}`, {
             method: "GET",
+            credentials: "include",
             headers: {
                 "Content-Type": "application/json",
             },
@@ -37,6 +39,7 @@ const getArticleByCategoryId = async (categoryId) => {
     try {
         let res = await fetch(`${BASE_URL}articles/category?catId=${categoryId}`, {
             method: "GET",
+            credentials: "include",
             headers: {
                 "Content-Type": "application/json",
             },
@@ -69,6 +72,7 @@ const saveArticle = async (article, isPublished, categoryId) => {
     try {
         let res = await fetch(`${BASE_URL}articles/save`, {
             method: "POST",
+            credentials: "include",
             headers: {
                 "Content-Type": "application/json",
             },
@@ -95,6 +99,7 @@ const updateArticle = async (articleId, article, isPublished, categoryId) => {
     try {
         let res = await fetch(`${BASE_URL}articles/update/${articleId}`, {
             method: "PUT",
+            credentials: "include",
             headers: {
                 "Content-Type": "application/json",
             },
@@ -112,6 +117,7 @@ const deleteArticleById = async (articleId) => {
     try {
         let res = await fetch(`${BASE_URL}articles/delete/${articleId}`, {
             method: "DELETE",
+            credentials: "include",
             headers: {
                 "Content-Type": "application/json",
             },

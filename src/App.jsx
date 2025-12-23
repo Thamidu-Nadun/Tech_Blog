@@ -4,6 +4,7 @@ import {Toaster} from 'react-hot-toast';
 
 const MainLayout = lazy (() => import ('./Layout/MainLayout'));
 const Home = lazy (() => import ('./pages/Home/Home'));
+const Login = lazy (() => import ('./pages/Login/Login'));
 const Article = lazy (() => import ('./pages/Article/Article'));
 const NotFound = lazy (() => import ('./pages/NotFound'));
 const DashBoardRoutes = lazy (() => import ('./pages/Admin/DashBoardRoutes'));
@@ -22,6 +23,7 @@ function App () {
         {/* Main */}
         <Route element={<MainLayout />}>
           <Route index element={<Home />} />
+          <Route path="/login" element={<Login />} />
           <Route path="article/:slug" element={<Article />} />
           <Route path="*" element={<NotFound />} />
         </Route>
