@@ -1,6 +1,7 @@
 import {Clock, Eye, ThumbsUp, User} from 'lucide-react';
 import TagButton from '../../../../Components/TagButton/TagButton';
 import {Link} from 'react-router-dom';
+import {Activity} from 'react';
 
 function ArticleCard({
   article_title = 'Introduction to AI',
@@ -9,6 +10,7 @@ function ArticleCard({
   article_author = 'John Doe',
   article_read_time = '2 min',
   article_category = 'AI',
+  article_link = '#',
   article_views = '1K',
   article_likes = '2K',
   article_thumbnail = 'https://images.unsplash.com/photo-1587620962725-abab7fe55159?w=400&h=250&fit=crop',
@@ -22,9 +24,11 @@ function ArticleCard({
         url(${article_thumbnail})`,
         }}
       >
-        <time className="article_date text-white text-center h-fit w-fit px-2 py-0.5 text-xs absolute top-0 border rounded-b-md bg-black">
-          {article_date}
-        </time>
+        <Activity mode={article_date ? 'visible' : 'hidden'}>
+          <time className="article_date text-white text-center h-fit w-fit px-2 py-0.5 text-xs absolute top-0 border rounded-b-md bg-black">
+            {article_date}
+          </time>
+        </Activity>
         <div className="absolute bottom-2 px-4 article_interactions flex justify-between w-full">
           <div className="flex gap-1">
             <span className="flex gap-2 w-fit items-center rounded-md text-sm h-fit px-2 py-0.5 bg-linear-to-r from-orange-600/20 to-amber-500/20 border border-orange-500/30 text-orange-400">
@@ -42,10 +46,10 @@ function ArticleCard({
         </div>
       </div>
       <div className="article_body px-0.5 p-4">
-        <div className="article_details border border-orange-900/20 mb-6 p-4 rounded-lg hover:bg-orange-900/10 transition-all duration-300">
+        <div className="article_details border border-orange-900/20 mb-6 p-4 rounded-lg transition-all duration-300">
           <Link
             className="article_title text-xl text-bold underline line-clamp-2"
-            to={'#'}
+            to={article_link}
           >
             {article_title}
           </Link>
@@ -56,7 +60,7 @@ function ArticleCard({
         <div className="article_info absolute bottom-0 mb-4 px-5 w-full flex justify-between text-gray-400 text-xs">
           <span className="article_author flex">
             <User size={15} />
-            {article_author}
+            {article_author ? article_author : 'Anonymous'}
           </span>
           <span className="article_read_time flex gap-2 mr-4">
             <Clock size={15} />

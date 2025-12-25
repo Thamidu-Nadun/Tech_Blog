@@ -30,8 +30,8 @@ function RecentArticles () {
             article_title={post.title}
             article_description={post.description}
             article_thumbnail={post.image}
-            article_link={`/articles/${post.id}`}
-            article_date={post.date}
+            article_link={`/article/${post.slug}`}
+            article_date={post.publishedDate}
             article_read_time={post.readTime}
             article_views="1K"
             article_author={post.authorId?.name}

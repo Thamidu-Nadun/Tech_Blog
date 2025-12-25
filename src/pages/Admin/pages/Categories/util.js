@@ -8,6 +8,7 @@ const getCategories = async () => {
   try {
     let res = await fetch(`${BASE_URL}categories/`, {
       method: "GET",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
@@ -29,6 +30,7 @@ const getCategoryById = async (id) => {
   try {
     let res = await fetch(`${BASE_URL}categories/${id}`, {
       method: "GET",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
@@ -49,6 +51,7 @@ const saveCategory = async (category) => {
   try {
     let res = await fetch(`${BASE_URL}categories/save`, {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
@@ -75,6 +78,7 @@ const updateCategoryById = async (id, category) => {
   try {
     let res = await fetch(`${BASE_URL}categories/update/${id}`, {
       method: "PUT",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
@@ -100,6 +104,7 @@ const deleteCategoryById = async (id) => {
   try {
     let res = await fetch(`${BASE_URL}categories/${id}`, {
       method: "DELETE",
+      credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },

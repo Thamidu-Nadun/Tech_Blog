@@ -1,5 +1,5 @@
 import {Calendar, Eye, Timer, User} from 'lucide-react';
-import React from 'react';
+import React, {Activity} from 'react';
 import TagButton from '../TagButton/TagButton';
 import {Link} from 'react-router-dom';
 
@@ -37,10 +37,12 @@ function ArticleCard({
         </Link>
         <p className="w-220 truncate">{article_description}</p>
         <div className="flex gap-4 my-4 opacity-75">
-          <div className="flex items-center gap-2">
-            <Calendar size={16} />
-            <span>{article_date}</span>
-          </div>
+          <Activity mode={article_date ? 'visible' : 'hidden'}>
+            <div className="flex items-center gap-2">
+              <Calendar size={16} />
+              <span>{article_date}</span>
+            </div>
+          </Activity>
           <div className="flex items-center gap-2">
             <Eye size={16} />
             <span>{formatter.format (Number (article_views))}</span>
