@@ -5,7 +5,7 @@ const login = async (data) => {
         email: data.email,
         password: data.password,
     }
-    let res = await fetch(`http://localhost:8080/api/v1/auth/login`, {
+    let res = await fetch(`${API_URL}auth/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
