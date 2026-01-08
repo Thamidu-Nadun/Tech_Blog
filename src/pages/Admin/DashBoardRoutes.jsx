@@ -1,5 +1,6 @@
 import React, {lazy} from 'react';
-import {Route} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
+import ProtectedRoute from '../../Layout/ProtectedRoute';
 
 const AdminDashboardLayout = lazy (() =>
   import ('../../Layout/AdminDashboardLayout')
@@ -16,7 +17,17 @@ const ArticleEdit = lazy (() => import ('./pages/Articles/Pages/ArticleEdit'));
 const CategoryNew = lazy (() => import ('./pages/Categories/CategoryNew'));
 
 const DashBoardRoutes = (
-  <Route path="/dashboard" element={<AdminDashboardLayout />}>
+  <Route
+    key="dashboard"
+    path="/dashboard"
+    element={
+      <ProtectedRoute
+        requiredRoles={['ROLE_ADMIN', 'ROLE_AUTHOR', 'ROLE_READER']}
+      >
+        <AdminDashboardLayout />
+      </ProtectedRoute>
+    }
+  >
     <Route index element={<DashboardPage />} />
     <Route path="articles">
       <Route index element={<ArticlesPage />} />

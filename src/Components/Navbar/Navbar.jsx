@@ -5,6 +5,13 @@ import {Link} from 'react-router-dom';
 function Navbar () {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState (false);
   const mobileMenuRef = useRef (null);
+  const paths = [
+    {name: 'Home', url: '/'},
+    {name: 'Category', url: ''},
+    {name: 'About', url: ''},
+    {name: 'RSS', url: ''},
+    {name: 'dashboard', url: '/dashboard'},
+  ];
 
   useEffect (
     () => {
@@ -31,42 +38,33 @@ function Navbar () {
   );
 
   return (
-    <nav className="h-20 w-full px-6 md:px-16 lg:px-24 xl:px-32 flex items-center 
-    justify-between z-50 text-white transition-all fixed bg-black/70 backdrop-blur-md">
+    <nav className="h-20 sticky top-0 w-full px-6 md:px-16 lg:px-24 xl:px-32 flex items-center 
+    justify-between z-50 text-white transition-all bg-black/70 backdrop-blur-md">
       <Link to="/" className="text-3xl text-orange-400">
         Techno
       </Link>
 
       <ul className="md:flex hidden items-center gap-10 text-md">
-        <li>
-          <a className="hover:text-orange-400 transition" href="#">
-            Home
-          </a>
-        </li>
-        <li>
-          <a className="hover:text-orange-400 transition" href="#">
-            Services
-          </a>
-        </li>
-        <li>
-          <a className="hover:text-orange-400 transition" href="#">
-            Portfolio
-          </a>
-        </li>
-        <li>
-          <a className="hover:text-orange-400 transition" href="#">
-            Pricing
-          </a>
-        </li>
+        {paths.map ((link, idx) => (
+          <Link
+            key={idx}
+            to={link.url}
+            className="hover:text-orange-400 transition"
+            href="#"
+          >
+            {link.name.toUpperCase ()}
+          </Link>
+        ))}
+
       </ul>
 
       <div className="flex gap-3">
-        <button className="px-4 py-2 rounded-2xl text-white hidden md:block border border-orange-400 hover:scale-105 transition-all duration-300">
+        <Link
+          to={'/login'}
+          className="px-4 py-2 rounded-2xl text-white hidden md:block border border-orange-400 hover:scale-105 transition-all duration-300"
+        >
           Log In
-        </button>
-        <button className="px-4 py-2 rounded-2xl text-white hidden md:block bg-linear-to-r from-orange-600 to-orange-400 hover:scale-105 transition-all duration-300">
-          Sign Up
-        </button>
+        </Link>
       </div>
       <button
         aria-label="menu-btn"
@@ -78,44 +76,37 @@ function Navbar () {
       </button>
 
       {/* Mobile Slide-in Menu */}
-      {isMobileMenuOpen &&
-        <div className="fixed inset-0 z-40 bg-black bg-opacity-50 flex md:hidden">
-          <div
-            ref={mobileMenuRef}
-            className={`flex justify-center items-center bg-white/90 text-black w-3/4 h-screen p-6 transform transition-transform duration-1000 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
-          >
-            <div className="flex-col text-center">
-              <ul className="flex flex-col space-y-4 text-lg">
-                <li>
-                  <a href="#" className="text-sm">
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-sm">
-                    Services
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-sm">
-                    Portfolio
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-sm">
-                    Pricing
-                  </a>
-                </li>
-              </ul>
-              <button
-                type="button"
-                className="bg-linear-to-r from-orange-500 to-orange-400 text-white mt-6 text-sm hover:from-orange-600 hover:to-orange-500 active:scale-95 transition-all w-40 h-11 rounded-full"
-              >
-                Get started
-              </button>
-            </div>
+
+      <div
+        className={`fixed inset-0 z-40 md:hidden transition-opacity duration-150 ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} bg-black/50`}
+      >
+        <div
+          ref={mobileMenuRef}
+          className={`flex justify-center items-center bg-amber-100/90 text-black w-3/4 h-screen p-6 transform transition-transform duration-1000 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
+        >
+          <div className="flex-col text-center">
+            <ul className="flex flex-col space-y-4 text-lg">
+              {paths.map ((link, idx) => (
+                <Link
+                  key={idx}
+                  to={link.url}
+                  className="hover:text-orange-400 transition"
+                  href="#"
+                >
+                  {link.name.toUpperCase ()}
+                </Link>
+              ))}
+            </ul>
+            <Link
+              to={'/login'}
+              className="bg-linear-to-r from-orange-500 to-orange-400 text-white mt-6 hover:from-orange-600 hover:to-orange-500 
+                active:scale-95 flex items-center justify-center transition-all px-6 py-2 rounded-xl"
+            >
+              Login
+            </Link>
           </div>
-        </div>}
+        </div>
+      </div>
     </nav>
   );
 }

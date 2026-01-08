@@ -1,18 +1,18 @@
-import { Github, Linkedin } from "lucide-react";
-import React from "react";
+import {Github, Linkedin} from 'lucide-react';
+import React from 'react';
 
-function Footer() {
+function Footer () {
   const quick_links = [
-    { name: "Documentation", href: "#" },
-    { name: "Tutorials", href: "#" },
-    { name: "Blog", href: "#" },
-    { name: "Community", href: "#" },
+    {name: 'Documentation', href: '#'},
+    {name: 'Tutorials', href: '#'},
+    {name: 'Blog', href: '#'},
+    {name: 'Community', href: '#'},
   ];
   const categories = [
-    { name: "React", href: "#" },
-    { name: "NextJs", href: "#" },
-    { name: "Tailwindcss", href: "#" },
-    { name: "Javascript", href: "#" },
+    {name: 'React', href: '#'},
+    {name: 'NextJs', href: '#'},
+    {name: 'Tailwindcss', href: '#'},
+    {name: 'Javascript', href: '#'},
   ];
   return (
     <footer className="px-6 md:px-16 lg:px-24 xl:px-32 w-full mt-30">
@@ -20,8 +20,9 @@ function Footer() {
         <div className="max-w-96">
           <h2 className="text-2xl text-orange-500">Techno</h2>
           <p className="mt-6 text-sm text-gray-500">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been.
+            Welcome to Techno, your go-to blog for the latest in web development
+            and programming. Stay updated with tutorials, tips, and industry news
+            to enhance your coding skills.
           </p>
           <div className="flex items-center gap-2 mt-3">
             <a href="#">
@@ -35,9 +36,9 @@ function Footer() {
 
         <div className="w-1/2 flex flex-wrap md:flex-nowrap justify-between">
           <div>
-            <h2 className="font-semibold text-gray-900 mb-5">Quick Links</h2>
+            <h2 className="font-semibold text-gray-200 mb-5">Quick Links</h2>
             <ul className="text-sm text-gray-500 space-y-2 list-none">
-              {quick_links.map((link, index) => (
+              {quick_links.map ((link, index) => (
                 <li key={index}>
                   <a
                     href={link.href}
@@ -50,9 +51,9 @@ function Footer() {
             </ul>
           </div>
           <div>
-            <h2 className="font-semibold text-gray-900 mb-5">Categories</h2>
+            <h2 className="font-semibold text-gray-200 mb-5">Categories</h2>
             <div className="text-sm text-gray-500 space-y-2 list-none">
-              {categories.map((category, index) => (
+              {categories.map ((category, index) => (
                 <li key={index}>
                   <a
                     href={category.href}

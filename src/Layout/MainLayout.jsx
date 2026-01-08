@@ -5,7 +5,7 @@ import ScrollToTop from '../Components/ScrollToTop/ScrollToTop';
 
 export default function MainLayout () {
   return (
-    <div className="overflow-x-hidden relative scroll-smooth">
+    <div className="relative scroll-smooth">
       <Navbar />
       <Outlet />
       <Footer />

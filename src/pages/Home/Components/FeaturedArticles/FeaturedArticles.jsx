@@ -25,7 +25,9 @@ function FeaturedArticles({autoScroll = false, autoScrollDuration = 3000}) {
         `${BASE_URL}articles/popular?page=0&size=2`
       );
       const data = await res.json();
-      setFeaturedPosts(data.data.content);
+      if (data) {
+        setFeaturedPosts(data.data?.content);
+      }
     } catch (error) {
       console.log (error);
     }
@@ -49,6 +51,8 @@ function FeaturedArticles({autoScroll = false, autoScrollDuration = 3000}) {
   useEffect (
     () => {
       if (!autoScroll) return;
+      if (!featuredPosts && featuredPosts?.length < 0) return;
+      
       const scrollI = setInterval (next, autoScrollDuration);
       return () => clearInterval (scrollI);
     },
@@ -79,26 +83,32 @@ function FeaturedArticles({autoScroll = false, autoScrollDuration = 3000}) {
         <div
           className="flex w-full transition-transform duration-500 ease-in-out"
           style={{transform: `translateX(-${postIndex * 100}%)`}}
-        >
-          {featuredPosts.map ((post, index) => (
-            <div key={index} className="min-w-full">
-              <ArticleCard
-                article_title={post.title}
-                article_description={post.description}
-                article_thumbnail={post.coverImage}
-                article_link={`/article/${post.slug}`}
-                article_date={post.publishedDate}
-                article_read_time={post.readTime}
-                article_views={post.views}
-                article_category={post.category?.name}
-              />
-            </div>
-          ))}
+        >{
+            featuredPosts &&
+            featuredPosts.length > 0 ?
+            featuredPosts.map((post, index) => (
+              <div key={index} className="min-w-full">
+                <ArticleCard
+                  article_title={post.title}
+                  article_description={post.description}
+                  article_thumbnail={post.coverImage}
+                  article_link={`/article/${post.slug}`}
+                  article_date={post.publishedDate}
+                  article_read_time={post.readTime}
+                  article_views={post.views}
+                  article_category={post.category?.name}
+                />
+              </div>
+            ))
+            : (
+              <div className='ml-4 mt-2'>No Articles Found</div>
+            )
+          }
         </div>
 
         <div className="indicators absolute bottom-0 w-full">
           <div className="indicator-item indicator-center flex items-center justify-center gap-2">
-            {featuredPosts.map ((_, index) => (
+            {featuredPosts && featuredPosts.map ((_, index) => (
               <div
                 className={`rounded-full border border-orange-500 ${index == postIndex ? 'size-4 bg-orange-500' : 'size-2'}`}
                 key={index}

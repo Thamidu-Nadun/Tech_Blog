@@ -1,9 +1,13 @@
 import {Fragment, useState} from 'react';
-import {login, register} from './util';
+import {login, me, register} from './util';
 import toast from 'react-hot-toast';
+import useAuth from '../../hooks/useAuth';
+import {useNavigate} from 'react-router-dom';
 
 const Login = () => {
   const [state, setState] = useState ('login');
+  const {loginUser} = useAuth ();
+  const navigator = useNavigate ();
 
   const [formData, setFormData] = useState ({
     name: '',
@@ -16,15 +20,26 @@ const Login = () => {
     setFormData (prev => ({...prev, [name]: value}));
   };
 
-  const handleLoginSubmit = e => {
+  const handleLoginSubmit = async e => {
     e.preventDefault ();
-    login (formData).then (data => {
+    try {
+      let data = await login (formData);
       if (data.code === 200) {
+        let userData = await me ();
+        console.log (userData);
+        loginUser (userData);
         toast.success ('Login Successful');
+
+        setTimeout (() => {
+          navigator ('/');
+        }, 1000);
       } else {
         toast.error (data.message);
       }
-    });
+    } catch (error) {
+      console.log (error);
+      toast.error ('An error occurred during login');
+    }
   };
   const handleSignupSubmit = e => {
     e.preventDefault ();

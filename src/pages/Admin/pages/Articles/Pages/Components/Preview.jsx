@@ -1,12 +1,13 @@
-import renderer from '@thamidu-nadun/md_parser';
+import {useEffect} from 'react';
 import Prism from 'prismjs';
+import renderer from '@thamidu-nadun/md_parser';
 import 'prismjs/components/prism-sql';
 import 'prismjs/components/prism-javascript';
 
 import 'prismjs/plugins/toolbar/prism-toolbar';
 import 'prismjs/plugins/toolbar/prism-toolbar.css';
 import 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard';
-import {useEffect} from 'react';
+import './article.css';
 
 const Preview = ({content: markdownContent}) => {
   const {html, front_data} = renderer (markdownContent);

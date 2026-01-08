@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import { Outlet } from "react-router-dom";
-import SideBar from "../Components/SideBar/SideBar";
+import React, {useState} from 'react';
+import {Outlet} from 'react-router-dom';
+import SideBar from '../Components/SideBar/SideBar';
 
-function AdminDashboardLayout() {
-  const [isSideBarOpen, setIsSideBarOpen] = useState(true);
-  window.addEventListener("resize", () => {
+function AdminDashboardLayout () {
+  const [isSideBarOpen, setIsSideBarOpen] = useState (true);
+  window.addEventListener ('resize', () => {
     if (window.innerWidth < 774) {
-      setIsSideBarOpen(false);
+      setIsSideBarOpen (false);
     } else {
-      setIsSideBarOpen(true);
+      setIsSideBarOpen (true);
     }
   });
   return (
@@ -20,7 +20,7 @@ function AdminDashboardLayout() {
       />
       {/* Main Content */}
       <div
-        className={`transition-all duration-300 ease-in-out ${isSideBarOpen ? "ml-64" : "ml-10 md:ml-24"}`}
+        className={`transition-all duration-300 ease-in-out ${isSideBarOpen ? 'ml-64' : 'ml-10 md:ml-16'}`}
       >
         <header className="w-screen h-12 bg-gray-800" />
         <div className="h-screen w-full m-4 px-4 relative ">

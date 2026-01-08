@@ -7,6 +7,7 @@ const login = async (data) => {
     }
     let res = await fetch(`${API_URL}auth/login`, {
         method: 'POST',
+        credentials: 'include',
         headers: {
             'Content-Type': 'application/json',
         },
@@ -31,4 +32,15 @@ const register = async (data) => {
     return res.json();
 }
 
-export { login, register };
+const me = async () => {
+    let res = await fetch(`${API_URL}auth/me`, {
+        method: 'GET',
+        credentials: 'include',
+    });
+    if (res.status === 401) {
+        return null;
+    }
+    return res.json();
+}
+
+export { login, register, me };

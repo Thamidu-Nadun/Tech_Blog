@@ -11,8 +11,10 @@ function RecentArticles () {
       const res = await fetch (`${BASE_URL}articles/latest?page=0&size=4`, {
         method: 'GET',
       });
-      const data = await res.json ();
-      setRecentPosts (data.data.content);
+      const data = await res.json();
+      if (data) {
+        setRecentPosts (data.data?.content);
+      }
     } catch (error) {
       console.error ('Error fetching posts:', error);
     }
@@ -24,7 +26,8 @@ function RecentArticles () {
   return (
     <Section section_title="Recent Articles">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {recentPosts.map (post => (
+      {recentPosts && recentPosts.length > 0 ?
+        recentPosts.map (post => (
           <ArticleCard
             key={post.id}
             article_title={post.title}
@@ -36,7 +39,10 @@ function RecentArticles () {
             article_views="1K"
             article_author={post.authorId?.name}
           />
-        ))}
+        ))
+          : (
+            <div className='ml-4 mt-2'>No Articles Found</div>
+          )}
       </div>
     </Section>
   );
