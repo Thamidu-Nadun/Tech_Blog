@@ -7,6 +7,12 @@
 
   /* Typography */
   --font-base: 1.05rem;
+  --font-xxs: 0.75rem;
+  --font-xs: 0.875rem;
+  --font-sm: 0.95rem;
+  --font-md: 1.1rem;
+  --font-lg: 1.25rem;
+  --font-xl: 1.5rem;
   --line-height-base: 1.85;
 
   /* Spacing */
@@ -155,7 +161,7 @@ ul {
 /* Mobile tuning */
 @media (max-width: 600px) {
   .article-body {
-    --font-base: 1rem;
+    --font-base: var(--font-sm);
     --line-height-base: 1.75;
     padding: 1.5rem 1rem 2.5rem;
   }

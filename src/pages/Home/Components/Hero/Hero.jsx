@@ -1,13 +1,13 @@
-import React from "react";
-import Button from "../../../../Components/Button/Button";
-import TagButton from "../../../../Components/TagButton/TagButton";
+import React from 'react';
+import Button from '../../../../Components/Button/Button';
+import TagButton from '../../../../Components/TagButton/TagButton';
 
-function Hero() {
+function Hero () {
   return (
     <div className="h-dvh flex justify-center items-center">
       <div className="container flex flex-col text-center justify-center items-center text-white -translate-y-14">
         <TagButton tag_title="CTRL+Blog" isActive={true} />
-        <h2 className="md:text-7xl text-5xl relative">
+        <h2 className="md:text-7xl text-3xl sm:text-5xl relative">
           &lt;nadun.
           <span className="font-noto-sans group cursor-pointer">
             開発者
@@ -20,7 +20,7 @@ function Hero() {
           </span>
           &gt;
         </h2>
-        <p className="my-4 md:text-xl text-md leading-5 mx-5">
+        <p className="my-4 md:text-xl text-sm leading-5 mx-5 font-normal">
           Hi, I'm <span className="font-caveat">Thamidu Nadun</span>, a
           developer sharing insights about modern development , emerging
           technologies, and practical coding solutions, exploitations. Join me

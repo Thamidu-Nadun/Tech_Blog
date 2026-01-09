@@ -31,25 +31,29 @@ function ArticleCard({
         />
         <Link
           to={article_link}
-          className="w-200 h-10 truncate text-3xl group-hover:text-orange-300 transition-all duration-300"
+          className="text-xl md:text-3xl line-clamp-2 md:line-clamp-3 wrap-break-word group-hover:text-orange-300 transition-all duration-300"
         >
           {article_title}
         </Link>
-        <p className="w-220 truncate">{article_description}</p>
-        <div className="flex gap-4 my-4 opacity-75">
+        <p className="text-sm md:text-base line-clamp-2 md:line-clamp-3 text-gray-300 wra-break-words">
+          {article_description}
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 my-4 opacity-75">
           <Activity mode={article_date ? 'visible' : 'hidden'}>
             <div className="flex items-center gap-2">
               <Calendar size={16} />
               <span>{article_date}</span>
             </div>
           </Activity>
-          <div className="flex items-center gap-2">
-            <Eye size={16} />
-            <span>{formatter.format (Number (article_views))}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Timer size={16} />
-            <span>{article_read_time}</span>
+          <div className="flex gap-6">
+            <div className="flex items-center gap-2">
+              <Eye size={16} />
+              <span>{formatter.format (Number (article_views))}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Timer size={16} />
+              <span>{article_read_time}</span>
+            </div>
           </div>
         </div>
       </div>

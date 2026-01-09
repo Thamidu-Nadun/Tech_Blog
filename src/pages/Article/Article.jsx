@@ -85,10 +85,12 @@ function Article () {
     <div className="flex flex-col items-center gap-4 relative top-16 p-4 max-w-3xl mx-auto 
     border-b border-amber-500/20">
       <img src={mainImage} alt="" className="rounded w-full" />
-      <div
-        className="article-body"
-        dangerouslySetInnerHTML={{__html: content}}
-      />
+      <div className="w-full px-2 md:px-1">
+        <div
+          className="article-body"
+          dangerouslySetInnerHTML={{__html: content}}
+        />
+      </div>
     </div>
   );
 }

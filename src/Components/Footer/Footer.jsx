@@ -1,18 +1,31 @@
 import {Github, Linkedin} from 'lucide-react';
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 function Footer () {
   const quick_links = [
-    {name: 'Documentation', href: '#'},
-    {name: 'Tutorials', href: '#'},
-    {name: 'Blog', href: '#'},
-    {name: 'Community', href: '#'},
+    {name: 'Home', href: '/'},
+    {name: 'About', href: '/about'},
+    {name: 'Blog', href: '/blog'},
+    {name: 'Contact', href: '/contact'},
   ];
   const categories = [
     {name: 'React', href: '#'},
     {name: 'NextJs', href: '#'},
     {name: 'Tailwindcss', href: '#'},
     {name: 'Javascript', href: '#'},
+  ];
+  const socialLinks = [
+    {
+      name: 'Github',
+      href: 'https://github.com/thamidu-nadun',
+      icon: <Github size={20} />,
+    },
+    {
+      name: 'Linkedin',
+      href: 'https://linkedin.com/in/thamidu',
+      icon: <Linkedin size={20} />,
+    },
   ];
   return (
     <footer className="px-6 md:px-16 lg:px-24 xl:px-32 w-full mt-30">
@@ -25,27 +38,32 @@ function Footer () {
             to enhance your coding skills.
           </p>
           <div className="flex items-center gap-2 mt-3">
-            <a href="#">
-              <Github className="size-5 text-orange-300 hover:text-orange-400" />
-            </a>
-            <a href="#">
-              <Linkedin className="size-5 text-orange-300 hover:text-orange-400" />
-            </a>
+            {socialLinks.map ((link, index) => (
+              <a
+                key={index}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-500 hover:text-orange-300 transition-colors duration-300"
+              >
+                {link.icon}
+              </a>
+            ))}
           </div>
         </div>
 
         <div className="w-1/2 flex flex-wrap md:flex-nowrap justify-between">
-          <div>
+          <div className="flex flex-col justify-start ml-0 md:ml-10 mb-5 md:mb-0">
             <h2 className="font-semibold text-gray-200 mb-5">Quick Links</h2>
-            <ul className="text-sm text-gray-500 space-y-2 list-none">
+            <ul className="text-sm text-gray-500 space-y-2 list-none ml-2">
               {quick_links.map ((link, index) => (
                 <li key={index}>
-                  <a
-                    href={link.href}
+                  <Link
+                    to={link.href}
                     className="hover:text-orange-300 transition-colors duration-300"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -53,16 +71,18 @@ function Footer () {
           <div>
             <h2 className="font-semibold text-gray-200 mb-5">Categories</h2>
             <div className="text-sm text-gray-500 space-y-2 list-none">
-              {categories.map ((category, index) => (
-                <li key={index}>
-                  <a
-                    href={category.href}
-                    className="hover:text-orange-300 transition-colors duration-300"
-                  >
-                    {category.name}
-                  </a>
-                </li>
-              ))}
+              <ul className="text-sm text-gray-500 space-y-2 list-none ml-2">
+                {categories.map ((category, index) => (
+                  <li key={index}>
+                    <Link
+                      to={category.href}
+                      className="hover:text-orange-300 transition-colors duration-300"
+                    >
+                      {category.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>

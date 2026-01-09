@@ -32,7 +32,7 @@ function RecentArticles () {
             key={post.id}
             article_title={post.title}
             article_description={post.description}
-            article_thumbnail={post.image}
+            article_thumbnail={post.coverImage}
             article_link={`/article/${post.slug}`}
             article_date={post.publishedDate}
             article_read_time={post.readTime}
