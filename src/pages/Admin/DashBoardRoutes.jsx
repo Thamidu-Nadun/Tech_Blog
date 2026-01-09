@@ -21,9 +21,7 @@ const DashBoardRoutes = (
     key="dashboard"
     path="/dashboard"
     element={
-      <ProtectedRoute
-        requiredRoles={['ROLE_ADMIN', 'ROLE_AUTHOR', 'ROLE_READER']}
-      >
+      <ProtectedRoute requiredRoles={['ROLE_ADMIN', 'ROLE_AUTHOR']}>
         <AdminDashboardLayout />
       </ProtectedRoute>
     }
