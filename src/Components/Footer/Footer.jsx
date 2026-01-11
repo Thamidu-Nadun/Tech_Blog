@@ -52,10 +52,10 @@ function Footer () {
           </div>
         </div>
 
-        <div className="w-1/2 flex flex-wrap md:flex-nowrap justify-between">
-          <div className="flex flex-col justify-start ml-0 md:ml-10 mb-5 md:mb-0">
+        <div className="w-1/2 flex flex-wrap md:flex-nowrap justify-between gap-10">
+          <div className="flex flex-col">
             <h2 className="font-semibold text-gray-200 mb-5">Quick Links</h2>
-            <ul className="text-sm text-gray-500 space-y-2 list-none ml-2">
+            <ul className="text-sm text-gray-500 list-none space-y-2 pl-2">
               {quick_links.map ((link, index) => (
                 <li key={index}>
                   <Link
@@ -68,10 +68,10 @@ function Footer () {
               ))}
             </ul>
           </div>
-          <div>
+          <div className="flex flex-col">
             <h2 className="font-semibold text-gray-200 mb-5">Categories</h2>
             <div className="text-sm text-gray-500 space-y-2 list-none">
-              <ul className="text-sm text-gray-500 space-y-2 list-none ml-2">
+              <ul className="text-sm text-gray-500 space-y-2 list-none pl-2">
                 {categories.map ((category, index) => (
                   <li key={index}>
                     <Link
