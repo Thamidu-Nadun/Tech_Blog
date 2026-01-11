@@ -1,8 +1,8 @@
-import React, {useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import BreadCrumb from '../../../../../Components/BreadCrumb/BreadCrumb';
 import {Calendar, Heading, Image, User, Rows2, Tags} from 'lucide-react';
 import Preview from './Components/Preview';
-import {saveArticle} from '../util';
+import {getCategories, saveArticle} from '../util';
 import toast from 'react-hot-toast';
 
 const ArticleNew = () => {
@@ -15,6 +15,7 @@ const ArticleNew = () => {
     content: '',
     tags: '',
   });
+  const [categories, setCategories] = useState ([]);
 
   const [isPreviewMode, setIsPreviewMode] = useState (false);
   const [Publish, setPublish] = useState (false);
@@ -54,6 +55,13 @@ const ArticleNew = () => {
         console.error ('Error:', error);
       });
   };
+
+  useEffect (() => {
+    getCategories ().then (res => {
+      setCategories (res.data);
+    });
+    console.log (categories);
+  }, []);
 
   return (
     <div className="w-full p-4">

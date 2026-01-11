@@ -46,6 +46,7 @@ const getCategories = async () => {
             },
         });
         let data = await res.json();
+        console.log(res.data);
         return data;
     } catch (error) {
         console.error("Error fetching categories:", error);
