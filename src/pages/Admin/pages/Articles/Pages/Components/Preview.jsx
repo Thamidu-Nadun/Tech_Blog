@@ -7,7 +7,6 @@ import 'prismjs/components/prism-javascript';
 import 'prismjs/plugins/toolbar/prism-toolbar';
 import 'prismjs/plugins/toolbar/prism-toolbar.css';
 import 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard';
-import './article.css';
 
 const Preview = ({content: markdownContent}) => {
   const {html, front_data} = renderer (markdownContent);

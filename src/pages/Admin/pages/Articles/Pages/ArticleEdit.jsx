@@ -269,7 +269,7 @@ const InputGroup = ({
   value = '',
   onChange,
 }) => (
-  <div className="flex items-center text-orange-300 my-2 border bg-indigo-500/5 border-gray-500/10 rounded gap-1 pl-2">
+  <div className="flex w-fit sm:w-full items-center text-orange-300 my-2 border bg-indigo-500/5 border-gray-500/10 rounded gap-1 pl-2">
     <Icon size={20} />
     <input
       className="w-full outline-none bg-transparent py-2.5 pl-2 border border-transparent focus:border-indigo-400 invalid:border-red-400 valid:border-green-400"
