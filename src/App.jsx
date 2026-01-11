@@ -3,7 +3,6 @@ import {Route, Routes} from 'react-router-dom';
 import {Toaster} from 'react-hot-toast';
 import {AuthProvider} from './context/AuthProvider';
 import DashBoardRoutes from './pages/Admin/DashBoardRoutes';
-import {HelmetProvider} from 'react-helmet-async';
 
 const MainLayout = lazy (() => import ('./Layout/MainLayout'));
 const Home = lazy (() => import ('./pages/Home/Home'));
@@ -31,7 +30,6 @@ function App () {
             <Route path="*" element={<NotFound />} />
           </Route>
           {/* Dashboard - Admin */}
-          {/* <DashBoardRoutes /> */}
           {DashBoardRoutes}
         </Routes>
       </AuthProvider>
