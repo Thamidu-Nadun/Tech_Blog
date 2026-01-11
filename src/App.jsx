@@ -13,31 +13,29 @@ const NotFound = lazy (() => import ('./pages/NotFound'));
 
 function App () {
   return (
-    <HelmetProvider>
-      <div className="bg-gray-950">
-        <AuthProvider>
-          <Toaster
-            position="bottom-right"
-            toastOptions={{
-              duration: 1500,
-              style: {background: '#333', color: '#fff'},
-            }}
-          />
-          <Routes>
-            {/* Main */}
-            <Route element={<MainLayout />}>
-              <Route index element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="article/:slug" element={<Article />} />
-              <Route path="*" element={<NotFound />} />
-            </Route>
-            {/* Dashboard - Admin */}
-            {/* <DashBoardRoutes /> */}
-            {DashBoardRoutes}
-          </Routes>
-        </AuthProvider>
-      </div>
-    </HelmetProvider>
+    <div className="bg-gray-950">
+      <AuthProvider>
+        <Toaster
+          position="bottom-right"
+          toastOptions={{
+            duration: 1500,
+            style: {background: '#333', color: '#fff'},
+          }}
+        />
+        <Routes>
+          {/* Main */}
+          <Route element={<MainLayout />}>
+            <Route index element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="article/:slug" element={<Article />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+          {/* Dashboard - Admin */}
+          {/* <DashBoardRoutes /> */}
+          {DashBoardRoutes}
+        </Routes>
+      </AuthProvider>
+    </div>
   );
 }
 
