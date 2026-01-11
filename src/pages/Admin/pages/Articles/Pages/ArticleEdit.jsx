@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import BreadCrumb from '../../../../../Components/BreadCrumb/BreadCrumb';
 import {Calendar, Heading, Image, User, Rows2, Tags} from 'lucide-react';
 import Preview from './Components/Preview';
-import {getArticleById, updateArticle} from '../util';
+import {getArticleById, getCategories, updateArticle} from '../util';
 import toast from 'react-hot-toast';
 import {useParams} from 'react-router-dom';
 
@@ -14,8 +14,15 @@ const ArticleEdit = () => {
     author: 'Nadun',
     image: '',
     content: '',
+    category: '',
     tags: '',
   });
+  const [categories, setCategories] = useState ([
+    {
+      id: null,
+      name: 'Default',
+    },
+  ]);
 
   const [isPreviewMode, setIsPreviewMode] = useState (false);
   const [Publish, setPublish] = useState (false);
@@ -61,12 +68,16 @@ const ArticleEdit = () => {
         author: data.author || 'Nadun',
         image: data.coverImage || '',
         content: data.body || '',
+        category: data.category.id || null,
         tags: data.tags.map (tag => {
           return tag.name;
         }) || '',
       });
       categoryRef.current.value = data.categoryId || '';
       setPublish (data.published || false);
+    });
+    getCategories ().then (res => {
+      setCategories (res.data);
     });
   }, []);
 
@@ -187,20 +198,16 @@ const ArticleEdit = () => {
                   <select
                     name="category"
                     ref={categoryRef}
-                    defaultValue=""
+                    value={formContent.category}
+                    onChange={e => handleChange ('category', e.target.value)}
                     className="w-full appearance-none text-amber-900 text-md rounded-lg border border-amber-500/20 bg-gray-100 px-3 py-2 outline-none transition focus:border-amber-500 focus:ring-2 focus:ring-amber-500/30"
                   >
                     <option value="" disabled>Select category</option>
-                    <option value="1">Technology</option>
-                    <option value="2">Health</option>
-                    <option value="3">Lifestyle</option>
-                    <option value="4">Education</option>
-                    <option value="5">Entertainment</option>
-                    <option value="6">Business</option>
-                    <option value="7">Travel</option>
-                    <option value="8">Food</option>
-                    <option value="9">Sports</option>
-                    <option value="10">Science</option>
+                    {categories.map (category => (
+                      <option key={category.id} value={category.id}>
+                        {category.name}
+                      </option>
+                    ))}
                   </select>
 
                   {/* Custom Arrow */}

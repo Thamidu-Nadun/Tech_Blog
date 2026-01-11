@@ -66,11 +66,7 @@ function Article () {
   );
 
   if (loading) {
-    return (
-      <div className="flex flex-col items-center justify-center gap-4 relative top-16 p-4 max-w-3xl mx-auto h-130">
-        <Loader />
-      </div>
-    );
+    return <Loader />;
   }
 
   if (error) {

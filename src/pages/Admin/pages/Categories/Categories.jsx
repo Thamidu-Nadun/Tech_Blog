@@ -1,8 +1,9 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {Plus, Tag, MoreVertical} from 'lucide-react';
 import {deleteCategoryById, getCategories} from './util';
 import toast from 'react-hot-toast';
+import Loader from '../../../../Components/Loader/Loader';
 
 function Categories () {
   const [categories, setCategories] = React.useState ([
@@ -13,27 +14,35 @@ function Categories () {
       imageUrl: 'https://via.placeholder.com/100?text=Tech',
     },
   ]);
+  const [loading, setLoading] = useState (false);
 
   useEffect (() => {
-    getCategories ().then (res => {
-      // console.log (res);
-      setCategories (res.data);
-    });
+    setLoading (true);
+    getCategories ()
+      .then (res => {
+        // console.log (res);
+        setCategories (res.data);
+      })
+      .finally (() => {
+        setLoading (false);
+      });
   }, []);
   return (
     <div className="container mx-auto p-4 sm:p-6 lg:p-8">
       <h1 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-white">
         Categories
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {categories.map (category => (
-          <CategoryCard
-            key={category.id}
-            category={category}
-            setCategories={setCategories}
-          />
-        ))}
-      </div>
+      {loading
+        ? <Loader />
+        : <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            {categories.map (category => (
+              <CategoryCard
+                key={category.id}
+                category={category}
+                setCategories={setCategories}
+              />
+            ))}
+          </div>}
       <Link
         to="/dashboard/categories/new"
         className="fixed bottom-10 right-10 bg-orange-500 text-white p-4 rounded-full shadow-lg hover:bg-orange-600 transition-colors duration-300 ease-in-out"
@@ -51,6 +60,7 @@ const CategoryCard = ({category, setCategories}) => {
         src={category.imageUrl}
         alt={category.name}
         className="w-24 h-24 mb-4"
+        loading="lazy"
       />
       <h3 className="text-lg font-bold text-orange-400 mb-2 text-center">
         {category.name}

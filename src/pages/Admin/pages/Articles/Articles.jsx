@@ -4,12 +4,18 @@ import { Pen, PenIcon, Plus, Trash } from "lucide-react";
 import { useEffect, useState } from "react";
 import { deleteArticleById, getArticles } from "./util";
 import toast from "react-hot-toast";
+import Loader from "../../../../Components/Loader/Loader";
 
 export default function Articles() {
   const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
+    setLoading(true);
     getArticles().then((res) => {
       setArticles(res.data);
+    }).finally(() => {
+      setLoading(false);
     });
   }, []);
 
@@ -63,6 +69,9 @@ export default function Articles() {
           </div>
         </div>
       </div>
+      {loading ? (
+        <Loader />
+      ) : (
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
         {articles.map((article, index) => (
           <ArticleCard
@@ -79,6 +88,7 @@ export default function Articles() {
           />
         ))}
       </div>
+      )}
       <Link
         to="/dashboard/articles/new"
         className="fixed bottom-10 z-100 left-0 md:left-auto md:bottom-5 md:right-10 flex items-center justify-center

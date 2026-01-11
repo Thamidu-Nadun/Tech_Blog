@@ -27,6 +27,7 @@ function Footer () {
       icon: <Linkedin size={20} />,
     },
   ];
+  const YEAR = new Date ().getFullYear ();
   return (
     <footer className="px-6 md:px-16 lg:px-24 xl:px-32 w-full mt-30">
       <div className="flex flex-col md:flex-row items-start justify-center gap-10 py-10 border-b border-orange-500/30">
@@ -88,7 +89,7 @@ function Footer () {
         </div>
       </div>
       <p className="py-4 text-center text-xs md:text-sm text-gray-500">
-        Copyright 2025 © @Nadun. All Right Reserved.
+        Copyright {YEAR} © @Nadun. All Right Reserved.
       </p>
     </footer>
   );
