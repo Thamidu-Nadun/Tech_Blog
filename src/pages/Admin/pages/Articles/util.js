@@ -35,6 +35,24 @@ const getArticleById = async (articleId) => {
     }
 };
 
+
+const getCategories = async () => {
+    try {
+        let res = await fetch(`${BASE_URL}categories/`, {
+            method: "GET",
+            credentials: "include",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        let data = await res.json();
+        return data;
+    } catch (error) {
+        console.error("Error fetching categories:", error);
+        return [];
+    }
+};
+
 const getArticleByCategoryId = async (categoryId) => {
     try {
         let res = await fetch(`${BASE_URL}articles/category?catId=${categoryId}`, {
@@ -136,5 +154,6 @@ export {
     getArticleByCategoryId,
     saveArticle,
     updateArticle,
-    deleteArticleById
+    deleteArticleById,
+    getCategories
 };
