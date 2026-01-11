@@ -16,7 +16,7 @@ function Categories () {
 
   useEffect (() => {
     getCategories ().then (res => {
-      console.log (res);
+      // console.log (res);
       setCategories (res.data);
     });
   }, []);
