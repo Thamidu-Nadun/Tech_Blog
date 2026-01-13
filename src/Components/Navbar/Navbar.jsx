@@ -78,11 +78,11 @@ function Navbar () {
       {/* Mobile Slide-in Menu */}
 
       <div
-        className={`fixed inset-0 z-40 md:hidden transition-opacity duration-150 ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} bg-black/50`}
+        className={`fixed top-22 inset-0 z-40 md:hidden transition-opacity duration-500 ease-out ${isMobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} bg-black/50`}
       >
         <div
           ref={mobileMenuRef}
-          className={`flex justify-center items-center bg-amber-100/90 text-black w-3/4 h-screen p-6 transform transition-transform duration-1000 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
+          className={`flex justify-center rounded-r-2xl items-center bg-slate-900/95 text-white backdrop-blur-md border-r border-white/10 w-3/4 h-[68vh] p-6 transform transition-transform duration-1000 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
         >
           <div className="flex-col text-center">
             <ul className="flex flex-col space-y-4 text-lg">
@@ -90,7 +90,7 @@ function Navbar () {
                 <Link
                   key={idx}
                   to={link.url}
-                  className="hover:text-orange-400 transition"
+                  className="text-white hover:text-orange-400 transition"
                   href="#"
                 >
                   {link.name.toUpperCase ()}
