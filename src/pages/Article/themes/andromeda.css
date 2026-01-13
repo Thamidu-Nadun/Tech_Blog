@@ -1,0 +1,126 @@
+/**
+ * Andromeda Theme
+ * Inspired by "Andromeda" by Eliver Lara
+ * PrismJS port
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #d5ced9;
+  background: #23262e;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  tab-size: 4;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  border-radius: 0.4em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: #23262e; /* Andromeda background */
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: 0.15em 0.3em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+
+/* Comments */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #6c7891;
+  font-style: italic;
+}
+
+/* Punctuation */
+.token.punctuation {
+  color: #cfd7ff;
+}
+
+.namespace {
+  opacity: 0.8;
+}
+
+/* Tags, constants */
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #c792ea; /* purple */
+}
+
+/* Numbers & booleans */
+.token.boolean,
+.token.number {
+  color: #f78c6c; /* orange */
+}
+
+/* Strings */
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #96e6c3; /* mint green */
+}
+
+/* Operators & variables */
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+  color: #d5ced9;
+}
+
+/* Functions, classes */
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+  color: #ffe66d; /* yellow */
+}
+
+/* Keywords */
+.token.keyword {
+  color: #7fd1ff; /* cyan */
+}
+
+/* Regex & important */
+.token.regex,
+.token.important {
+  color: #f39c12;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}

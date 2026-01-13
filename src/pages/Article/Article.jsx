@@ -1,12 +1,16 @@
 import {Activity, Fragment, useEffect, useState} from 'react';
 import renderer from '@thamidu-nadun/md_parser';
 import './article.css';
-import './theme.css';
 import Prismjs from 'prismjs';
+import {loadAllLanguages, loadTheme} from './config';
 
-import 'prismjs/components/prism-sql';
-import 'prismjs/components/prism-javascript';
+// prism languages
+(async () => {
+  await loadAllLanguages ();
+  await loadTheme ('vira');
+}) ();
 
+// prism tools
 import 'prismjs/plugins/toolbar/prism-toolbar';
 import 'prismjs/plugins/toolbar/prism-toolbar.css';
 import 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard';
