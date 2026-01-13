@@ -1,8 +1,11 @@
 import {Activity, Fragment, useEffect, useState} from 'react';
+import Loader from '../../Components/Loader/Loader';
+import {getArticle, updateViews} from './util';
 import renderer from '@thamidu-nadun/md_parser';
-import './article.css';
-import Prismjs from 'prismjs';
+import {useParams} from 'react-router-dom';
 import {loadAllLanguages, loadTheme} from './config';
+import Prismjs from 'prismjs';
+import './article.css';
 
 // prism languages
 (async () => {
@@ -14,9 +17,6 @@ import {loadAllLanguages, loadTheme} from './config';
 import 'prismjs/plugins/toolbar/prism-toolbar';
 import 'prismjs/plugins/toolbar/prism-toolbar.css';
 import 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard';
-import {useParams} from 'react-router-dom';
-import {getArticle} from './util';
-import Loader from '../../Components/Loader/Loader';
 
 function Article () {
   const {slug} = useParams ();
@@ -39,6 +39,7 @@ function Article () {
 
           if (isMounted) {
             setMainImage (article.data.coverImage);
+            updateViews (article.data.id);
             const renderedContent = renderer (article.data.body).html;
             setContent (renderedContent);
           }

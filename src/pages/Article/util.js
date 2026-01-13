@@ -11,4 +11,15 @@ const getArticle = async slug => {
         return null;
     }
 }
-export { getArticle };
+const updateViews = async articleId => {
+    try {
+        const res = await fetch(`${BASE_URL}engagement/articles/views/${articleId}`, {
+            method: 'PUT',
+        });
+        return res.ok;
+    } catch (error) {
+        console.log('Error updating views:', error);
+        return false;
+    }
+}
+export { getArticle, updateViews };

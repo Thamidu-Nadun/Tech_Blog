@@ -82,7 +82,7 @@ function Navbar () {
       >
         <div
           ref={mobileMenuRef}
-          className={`flex justify-center rounded-r-2xl items-center bg-slate-900/95 text-white backdrop-blur-md border-r border-white/10 w-3/4 h-[68vh] p-6 transform transition-transform duration-1000 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
+          className={`flex justify-center w-3/4 h-[80vh] rounded-r-2xl items-center bg-slate-900/95 text-white backdrop-blur-md border-r border-white/10 p-6 transform transition-transform duration-1000 ease-in-out ${isMobileMenuOpen ? 'translate-x-0' : '-translate-x-full'}`}
         >
           <div className="flex-col text-center">
             <ul className="flex flex-col space-y-4 text-lg">
