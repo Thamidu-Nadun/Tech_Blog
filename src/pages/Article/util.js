@@ -22,4 +22,5 @@ const updateViews = async articleId => {
         return false;
     }
 }
+
 export { getArticle, updateViews };
