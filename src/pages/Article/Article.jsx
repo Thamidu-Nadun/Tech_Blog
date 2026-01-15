@@ -4,7 +4,7 @@ import {getArticle, updateViews} from './util';
 import renderer from '@thamidu-nadun/md_parser';
 import {useParams} from 'react-router-dom';
 import Prism from './PrismSetup';
-import {loadAllLanguages, loadTheme} from './config';
+import {loadTheme} from './config';
 import './article.css';
 
 function Article () {
@@ -58,7 +58,6 @@ function Article () {
 
       (async () => {
         await loadTheme ('vira');
-        await loadAllLanguages ();
         if (!cancelled) {
           Prism.highlightAll ();
         }
