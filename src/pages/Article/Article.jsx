@@ -7,11 +7,7 @@ import {loadAllLanguages, loadTheme} from './config';
 import Prismjs from 'prismjs';
 import './article.css';
 
-// prism languages
-(async () => {
-  await loadAllLanguages ();
-  await loadTheme ('vira');
-}) ();
+window.Prism = Prismjs; // make Prismjs globally available
 
 // prism tools
 import 'prismjs/plugins/toolbar/prism-toolbar';
@@ -65,7 +61,12 @@ function Article () {
 
   useEffect (
     () => {
-      Prismjs.highlightAll ();
+      (async () => {
+        // prism languages
+        await loadAllLanguages ();
+        await loadTheme ('vira');
+        Prismjs.highlightAll ();
+      }) ();
     },
     [content]
   );
