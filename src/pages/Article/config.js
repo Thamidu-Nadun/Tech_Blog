@@ -55,7 +55,7 @@ export const languageHighlightLoader = async (lang) => {
     if (!loader) {
         throw new Error(`Language "${lang}" is not supported.`);
     }
-    await loader;
+    await loader();
 };
 
 export const loadAllLanguages = async () => {

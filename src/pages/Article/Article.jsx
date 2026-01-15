@@ -3,16 +3,9 @@ import Loader from '../../Components/Loader/Loader';
 import {getArticle, updateViews} from './util';
 import renderer from '@thamidu-nadun/md_parser';
 import {useParams} from 'react-router-dom';
+import Prism from './PrismSetup';
 import {loadAllLanguages, loadTheme} from './config';
-import Prismjs from 'prismjs';
 import './article.css';
-
-window.Prism = Prismjs; // make Prismjs globally available
-
-// prism tools
-import 'prismjs/plugins/toolbar/prism-toolbar';
-import 'prismjs/plugins/toolbar/prism-toolbar.css';
-import 'prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard';
 
 function Article () {
   const {slug} = useParams ();
@@ -61,12 +54,19 @@ function Article () {
 
   useEffect (
     () => {
+      let cancelled = false;
+
       (async () => {
-        // prism languages
-        await loadAllLanguages ();
         await loadTheme ('vira');
-        Prismjs.highlightAll ();
+        await loadAllLanguages ();
+        if (!cancelled) {
+          Prism.highlightAll ();
+        }
       }) ();
+
+      return () => {
+        cancelled = true;
+      };
     },
     [content]
   );
