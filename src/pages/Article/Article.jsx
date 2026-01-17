@@ -6,6 +6,8 @@ import {useParams} from 'react-router-dom';
 import Prism from './PrismSetup';
 import {loadTheme} from './config';
 import './article.css';
+import REACTIONS from '../../utils/reactions';
+import ReactionItem from '../../Components/ReactionItem/ReactionItem';
 
 function Article () {
   const {slug} = useParams ();
@@ -99,6 +101,15 @@ function Article () {
             dangerouslySetInnerHTML={{__html: content}}
           />
         </div>
+      </div>
+      <div className="flex flex-col gap-4 md:flex-row items-center justify-center w-full mt-18">
+        {REACTIONS.map (reaction => (
+          <ReactionItem
+            key={reaction.id}
+            file={reaction.file}
+            label={reaction.label}
+          />
+        ))}
       </div>
     </Fragment>
   );
