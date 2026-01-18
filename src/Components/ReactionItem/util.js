@@ -1,13 +1,22 @@
 import toast from "react-hot-toast";
+import { REACTION_TYPE } from "../../utils/reactions";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
 const updateReaction = async (articleId, type) => {
+    let reactionType = null;
+    for (const [key, value] of Object.entries(REACTION_TYPE)) {
+        if (value === type) {
+            reactionType = key;
+            break;
+        }
+    }
+
     try {
         let res = await fetch(`${API_URL}engagement/articles/reactions/engage/${articleId}`, {
             method: 'PUT',
             credentials: 'include',
-            body: JSON.stringify(type.toUpperCase()),
+            body: JSON.stringify(reactionType),
             headers: {
                 'Content-Type': 'application/json',
             },
