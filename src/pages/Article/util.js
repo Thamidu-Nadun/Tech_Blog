@@ -23,4 +23,15 @@ const updateViews = async articleId => {
     }
 }
 
-export { getArticle, updateViews };
+const getReactions = async articleId => {
+    try {
+        const res = await fetch(`${BASE_URL}engagement/articles/reactions/${articleId}`);
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        console.error('Error fetching reactions:', error);
+        return null;
+    }
+}
+
+export { getArticle, updateViews, getReactions };

@@ -1,18 +1,27 @@
 import {DotLottieReact} from '@lottiefiles/dotlottie-react';
-import {useRef} from 'react';
+import {useRef, useState} from 'react';
+import {updateReaction} from './util';
 
-const ReactionItem = ({file, label}) => {
+const ReactionItem = ({file, label, count, articleId}) => {
   const reactionRef = useRef (null);
+  const [reactCount, setReactCount] = useState (count || 0);
 
   const handlePlay = () => {
     if (reactionRef.current) {
       reactionRef.current.play ();
     }
   };
+  const handleUpdate = () => {
+    if (reactionRef.current) {
+      setReactCount (prev => prev + 1);
+      handlePlay ();
+      updateReaction (articleId, label);
+    }
+  };
   return (
     <div
       className="m-2 cursor-pointer size-24 group flex flex-col items-center"
-      onClick={handlePlay}
+      onClick={handleUpdate}
       title={label}
     >
       <DotLottieReact
@@ -28,7 +37,7 @@ const ReactionItem = ({file, label}) => {
       group-hover:text-gray-100
       transition-colors duration-200 text-center w-12 h-8 flex items-center justify-center rounded-xl border border-gray-100
     ">
-        0
+        {reactCount}
       </div>
     </div>
   );

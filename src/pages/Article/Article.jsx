@@ -6,15 +6,17 @@ import {useParams} from 'react-router-dom';
 import Prism from './PrismSetup';
 import {loadTheme} from './config';
 import './article.css';
-import REACTIONS from '../../utils/reactions';
+import REACTIONS, {REACTION_TYPE} from '../../utils/reactions';
 import ReactionItem from '../../Components/ReactionItem/ReactionItem';
 
 function Article () {
   const {slug} = useParams ();
+  const [articleId, setArticleId] = useState (null);
   const [mainImage, setMainImage] = useState (null);
   const [content, setContent] = useState ('');
   const [error, setError] = useState (null);
   const [loading, setLoading] = useState (false);
+  const [engagement, setEngagement] = useState ({});
 
   useEffect (
     () => {
@@ -30,7 +32,9 @@ function Article () {
 
           if (isMounted) {
             setMainImage (article.data.coverImage);
+            setArticleId (article.data.id);
             updateViews (article.data.id);
+            setEngagement (article.data.reactions);
             const renderedContent = renderer (article.data.body).html;
             setContent (renderedContent);
           }
@@ -69,7 +73,7 @@ function Article () {
         cancelled = true;
       };
     },
-    [content]
+    [content, engagement]
   );
 
   if (loading) {
@@ -103,13 +107,18 @@ function Article () {
         </div>
       </div>
       <div className="flex flex-col gap-4 md:flex-row items-center justify-center w-full mt-18">
-        {REACTIONS.map (reaction => (
-          <ReactionItem
-            key={reaction.id}
-            file={reaction.file}
-            label={reaction.label}
-          />
-        ))}
+        {REACTIONS.map (reaction => {
+          let count = engagement[reaction.label] || 0;
+          return (
+            <ReactionItem
+              key={reaction.id}
+              file={reaction.file}
+              label={reaction.label}
+              articleId={articleId}
+              count={count}
+            />
+          );
+        })}
       </div>
     </Fragment>
   );
