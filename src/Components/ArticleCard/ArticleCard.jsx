@@ -24,18 +24,18 @@ function ArticleCard({
         url(${article_thumbnail})`,
       }}
     >
-      <div className="absolute bottom-5 px-5 bg-linear-to-b from--transparent to-black/80 to-90% group-hover:to-60% transition-all duration-300">
+      <div className="absolute w-full bottom-5 px-5 bg-linear-to-b from--transparent to-black/80 to-90% group-hover:to-60% transition-all duration-300">
         <TagButton
           tag_title={article_category}
           tag_link={article_category_link}
         />
         <Link
           to={article_link}
-          className="text-xl md:text-3xl line-clamp-2 md:line-clamp-3 wrap-break-word group-hover:text-orange-300 transition-all duration-300"
+          className="text-xl md:text-3xl line-clamp-1 w-4xl wrap-break-word group-hover:text-orange-300 transition-all duration-300"
         >
           {article_title}
         </Link>
-        <p className="text-sm md:text-base line-clamp-2 md:line-clamp-3 text-gray-300 wra-break-words">
+        <p className="text-sm md:text-base line-clamp-1 w-5xl text-gray-300 wra-break-words">
           {article_description}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 my-4 opacity-75">

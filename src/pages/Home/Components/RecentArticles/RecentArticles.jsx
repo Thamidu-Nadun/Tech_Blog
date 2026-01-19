@@ -40,6 +40,7 @@ function RecentArticles () {
             article_views={post.views}
             article_likes={post?.reactions?.love || 0}
             article_author={post.authorId?.name}
+            article_category={post?.category?.name}
           />
         ))
           : (
