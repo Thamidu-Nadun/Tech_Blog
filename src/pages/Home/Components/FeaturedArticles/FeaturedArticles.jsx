@@ -4,7 +4,8 @@ import ArticleCard from '../../../../Components/ArticleCard/ArticleCard';
 import {ChevronLeft, ChevronRight} from 'lucide-react';
 
 function FeaturedArticles({autoScroll = false, autoScrollDuration = 3000}) {
-  const [postIndex, setPostIndex] = useState (0);
+  const [postIndex, setPostIndex] = useState(0);
+  const articleLength = 4;
   const [featuredPosts, setFeaturedPosts] = useState ([
     {
       id: 1,
@@ -22,7 +23,7 @@ function FeaturedArticles({autoScroll = false, autoScrollDuration = 3000}) {
     try {
       const BASE_URL = import.meta.env.VITE_API_URL;
       const res = await fetch (
-        `${BASE_URL}articles/popular?page=0&size=2`
+        `${BASE_URL}articles/popular?page=0&size=${articleLength}`
       );
       const data = await res.json();
       if (data) {

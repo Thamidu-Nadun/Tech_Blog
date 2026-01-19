@@ -12,6 +12,7 @@ function RecentArticles () {
         method: 'GET',
       });
       const data = await res.json();
+      console.log(data)
       if (data) {
         setRecentPosts (data.data?.content);
       }
@@ -21,7 +22,7 @@ function RecentArticles () {
   };
 
   useEffect (() => {
-    getPosts ();
+    getPosts();
   }, []);
   return (
     <Section section_title="Recent Articles">
@@ -36,7 +37,8 @@ function RecentArticles () {
             article_link={`/article/${post.slug}`}
             article_date={post.publishedDate}
             article_read_time={post.readTime}
-            article_views="1K"
+            article_views={post.views}
+            article_likes={post?.reactions?.love || 0}
             article_author={post.authorId?.name}
           />
         ))

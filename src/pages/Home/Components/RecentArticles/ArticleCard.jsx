@@ -1,4 +1,4 @@
-import {Clock, Eye, ThumbsUp, User} from 'lucide-react';
+import {Clock, Eye, Heart, ThumbsUp, User} from 'lucide-react';
 import TagButton from '../../../../Components/TagButton/TagButton';
 import {Link} from 'react-router-dom';
 import {Activity} from 'react';
@@ -36,7 +36,7 @@ function ArticleCard({
               {article_views}
             </span>
             <span className="flex gap-2 items-center w-fit rounded-md h-fit px-2 py-0.5 text-sm bg-linear-to-r from-orange-600/20 to-amber-500/20 border border-orange-500/30 text-orange-400">
-              <ThumbsUp size={15} />
+              <Heart size={15} />
               {article_likes}
             </span>
           </div>
